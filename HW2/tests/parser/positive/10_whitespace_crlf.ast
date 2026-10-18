@@ -1,0 +1,16 @@
+Module
+  Function f  @2:1
+    params:   x: int
+    requires: —
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @2:22
+        Assign r = x  @3:2
+        If (> x 0)  @4:2
+          then:
+            Block  @4:9
+              Assign r = 1  @4:10
+          else:
+            Block  @4:19

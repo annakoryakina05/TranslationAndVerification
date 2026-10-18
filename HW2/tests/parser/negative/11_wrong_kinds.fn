@@ -1,0 +1,9 @@
+f(x: int) returns r: int {
+  if (x) r = 1;
+  r = x > 1;
+  while (forall(i: int | i > 0)) r = 1;
+  if (p(x)) r = 2;
+  assert x + 1;
+  r = true;
+  r = not x;
+}

@@ -1,0 +1,10 @@
+// comments are skipped
+gcd(x: int, y: int) returns r: int // tail comment
+{
+  if (x == 0) r = y; else r = x;
+}
+1x 0 00 01 123abc
+iff if ifx
+a/b // c
+=== <== a-->b
+snake_case

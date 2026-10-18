@@ -1,0 +1,46 @@
+nonterminal,ARROW,ASSIGN,BAR,COLON,COMMA,EQ,FAT_ARROW,GE,GT,IDENT,INT,KW_AND,KW_ASSERT,KW_ASSUME,KW_ELSE,KW_ENSURES,KW_EXISTS,KW_FALSE,KW_FORALL,KW_FUNCTION,KW_IF,KW_INT,KW_INVARIANT,KW_LENGTH,KW_NOT,KW_OR,KW_REQUIRES,KW_RETURNS,KW_TRUE,KW_USES,KW_WHILE,LBRACE,LBRACKET,LE,LPAREN,LT,MINUS,NE,PLUS,RBRACE,RBRACKET,RPAREN,SEMI,SLASH,STAR,$
+module,,,,,,,,,,decl decl_list,,,,,,,,,,decl decl_list,,,,,,,,,,,,,,,,,,,,,,,,,,
+decl_list,,,,,,,,,,decl decl_list,,,,,,,,,,decl decl_list,,,,,,,,,,,,,,,,,,,,,,,,,,ε
+decl,,,,,,,,,,IDENT LPAREN param_list RPAREN decl_tail,,,,,,,,,,KW_FUNCTION IDENT LPAREN param_list RPAREN fn_tail,,,,,,,,,,,,,,,,,,,,,,,,,,
+decl_tail,,,,,,,FAT_ARROW expr,,,,,,,,,,,,,,,,,,,,fn_tail,fn_tail,,,,,,,,,,,,,,,,,,
+fn_tail,,,,,,,,,,,,,,,,,,,,,,,,,,,requires_opt KW_RETURNS var_def var_def_rest ensures_opt uses_opt statement,requires_opt KW_RETURNS var_def var_def_rest ensures_opt uses_opt statement,,,,,,,,,,,,,,,,,,
+requires_opt,,,,,,,,,,,,,,,,,,,,,,,,,,,KW_REQUIRES expr,ε,,,,,,,,,,,,,,,,,,
+ensures_opt,,,,,,,,,,ε,,,ε,ε,,KW_ENSURES expr,,,,,ε,,,,,,,,,ε,ε,ε,,,,,,,,,,,,,,
+uses_opt,,,,,,,,,,ε,,,ε,ε,,,,,,,ε,,,,,,,,,KW_USES var_def var_def_rest,ε,ε,,,,,,,,,,,,,,
+param_list,,,,,,,,,,var_def var_def_rest,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,ε,,,,
+var_def_rest,,,,,COMMA var_def var_def_rest,,,,,ε,,,ε,ε,,ε,,,,,ε,,,,,,,,,ε,ε,ε,,,,,,,,,,ε,,,,
+var_def,,,,,,,,,,IDENT COLON type,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+type,,,,,,,,,,,,,,,,,,,,,,KW_INT array_opt,,,,,,,,,,,,,,,,,,,,,,,,
+array_opt,,,ε,,ε,,,,,ε,,,ε,ε,,ε,,,,,ε,,,,,,,,,ε,ε,ε,LBRACKET RBRACKET,,,,,,,,,ε,,,,
+statement,,,,,,,,,,assign,,,assert_stmt,assume_stmt,,,,,,,if_stmt,,,,,,,,,,while_stmt,block,,,,,,,,,,,,,,
+block,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,LBRACE stmt_list RBRACE,,,,,,,,,,,,,,
+stmt_list,,,,,,,,,,statement stmt_list,,,statement stmt_list,statement stmt_list,,,,,,,statement stmt_list,,,,,,,,,,statement stmt_list,statement stmt_list,,,,,,,,ε,,,,,,
+if_stmt,,,,,,,,,,,,,,,,,,,,,KW_IF LPAREN expr RPAREN statement else_opt,,,,,,,,,,,,,,,,,,,,,,,,,
+else_opt,,,,,,,,,,ε,,,ε,ε,KW_ELSE statement / ε,,,,,ε,ε,,,,,,,,,,ε,ε,,,,,,,,ε,,,,,,ε
+while_stmt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,KW_WHILE LPAREN expr RPAREN invariant_opt statement,,,,,,,,,,,,,,,
+invariant_opt,,,,,,,,,,ε,,,ε,ε,,,,,,,ε,,KW_INVARIANT expr,,,,,,,,ε,ε,,,,,,,,,,,,,,
+assert_stmt,,,,,,,,,,,,,KW_ASSERT expr SEMI,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+assume_stmt,,,,,,,,,,,,,,KW_ASSUME expr SEMI,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+assign,,,,,,,,,,IDENT assign_rest,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+assign_rest,,ASSIGN expr SEMI,,,COMMA IDENT ident_list ASSIGN expr SEMI,,,,,,,,,,,,,,,,,,,,,,,,,,,,LBRACKET expr RBRACKET ASSIGN expr SEMI,,,,,,,,,,,,,
+ident_list,,ε,,,COMMA IDENT ident_list,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+expr,,,,,,,,,,or_expr impl_rest,or_expr impl_rest,,,,,,or_expr impl_rest,or_expr impl_rest,or_expr impl_rest,,,,,or_expr impl_rest,or_expr impl_rest,,,,or_expr impl_rest,,,,,,or_expr impl_rest,,or_expr impl_rest,,,,,,,,,
+impl_rest,ARROW expr,,,,ε,,,,,ε,,,ε,ε,,,,,,ε,ε,,,,,,,ε,,ε,ε,ε,,,,,,,,,ε,ε,ε,,,ε
+or_expr,,,,,,,,,,and_expr or_rest,and_expr or_rest,,,,,,and_expr or_rest,and_expr or_rest,and_expr or_rest,,,,,and_expr or_rest,and_expr or_rest,,,,and_expr or_rest,,,,,,and_expr or_rest,,and_expr or_rest,,,,,,,,,
+or_rest,ε,,,,ε,,,,,ε,,,ε,ε,,,,,,ε,ε,,,,,KW_OR and_expr or_rest,,ε,,ε,ε,ε,,,,,,,,,ε,ε,ε,,,ε
+and_expr,,,,,,,,,,not_expr and_rest,not_expr and_rest,,,,,,not_expr and_rest,not_expr and_rest,not_expr and_rest,,,,,not_expr and_rest,not_expr and_rest,,,,not_expr and_rest,,,,,,not_expr and_rest,,not_expr and_rest,,,,,,,,,
+and_rest,ε,,,,ε,,,,,ε,,KW_AND not_expr and_rest,ε,ε,,,,,,ε,ε,,,,,ε,,ε,,ε,ε,ε,,,,,,,,,ε,ε,ε,,,ε
+not_expr,,,,,,,,,,cmp_expr,cmp_expr,,,,,,cmp_expr,cmp_expr,cmp_expr,,,,,cmp_expr,KW_NOT not_expr,,,,cmp_expr,,,,,,cmp_expr,,cmp_expr,,,,,,,,,
+cmp_expr,,,,,,,,,,add_expr cmp_rest,add_expr cmp_rest,,,,,,add_expr cmp_rest,add_expr cmp_rest,add_expr cmp_rest,,,,,add_expr cmp_rest,,,,,add_expr cmp_rest,,,,,,add_expr cmp_rest,,add_expr cmp_rest,,,,,,,,,
+cmp_rest,ε,,,,ε,relop add_expr,,relop add_expr,relop add_expr,ε,,ε,ε,ε,,,,,,ε,ε,,,,,ε,,ε,,ε,ε,ε,,relop add_expr,,relop add_expr,,relop add_expr,,,ε,ε,ε,,,ε
+relop,,,,,,EQ,,GE,GT,,,,,,,,,,,,,,,,,,,,,,,,,LE,,LT,,NE,,,,,,,,
+add_expr,,,,,,,,,,mul_expr add_rest,mul_expr add_rest,,,,,,mul_expr add_rest,mul_expr add_rest,mul_expr add_rest,,,,,mul_expr add_rest,,,,,mul_expr add_rest,,,,,,mul_expr add_rest,,mul_expr add_rest,,,,,,,,,
+add_rest,ε,,,,ε,ε,,ε,ε,ε,,ε,ε,ε,,,,,,ε,ε,,,,,ε,,ε,,ε,ε,ε,,ε,,ε,MINUS mul_expr add_rest,ε,PLUS mul_expr add_rest,,ε,ε,ε,,,ε
+mul_expr,,,,,,,,,,unary mul_rest,unary mul_rest,,,,,,unary mul_rest,unary mul_rest,unary mul_rest,,,,,unary mul_rest,,,,,unary mul_rest,,,,,,unary mul_rest,,unary mul_rest,,,,,,,,,
+mul_rest,ε,,,,ε,ε,,ε,ε,ε,,ε,ε,ε,,,,,,ε,ε,,,,,ε,,ε,,ε,ε,ε,,ε,,ε,ε,ε,ε,,ε,ε,ε,SLASH unary mul_rest,STAR unary mul_rest,ε
+unary,,,,,,,,,,primary,primary,,,,,,primary,primary,primary,,,,,primary,,,,,primary,,,,,,primary,,MINUS unary,,,,,,,,,
+primary,,,,,,,,,,IDENT ident_suffix,INT,,,,,,quantifier LPAREN var_def BAR expr RPAREN,KW_FALSE,quantifier LPAREN var_def BAR expr RPAREN,,,,,KW_LENGTH LPAREN args RPAREN,,,,,KW_TRUE,,,,,,LPAREN expr RPAREN,,,,,,,,,,,
+quantifier,,,,,,,,,,,,,,,,,KW_EXISTS,,KW_FORALL,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ident_suffix,ε,,,,ε,ε,,ε,ε,ε,,ε,ε,ε,,,,,,ε,ε,,,,,ε,,ε,,ε,ε,ε,LBRACKET expr RBRACKET,ε,LPAREN args RPAREN,ε,ε,ε,ε,,ε,ε,ε,ε,ε,ε
+args,,,,,,,,,,expr args_rest,expr args_rest,,,,,,expr args_rest,expr args_rest,expr args_rest,,,,,expr args_rest,expr args_rest,,,,expr args_rest,,,,,,expr args_rest,,expr args_rest,,,,,ε,,,,
+args_rest,,,,,COMMA expr args_rest,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,ε,,,,

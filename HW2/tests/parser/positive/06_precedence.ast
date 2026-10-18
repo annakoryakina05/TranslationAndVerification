@@ -1,0 +1,38 @@
+Module
+  Function calc  @2:1
+    params:   a: int, b: int, c: int
+    requires: —
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @2:45
+        Assign r = (+ a (* b c))  @3:3
+        Assign r = (* (+ a b) c)  @4:3
+        Assign r = (- (- a b) c)  @5:3
+        Assign r = (/ (/ a b) c)  @6:3
+        Assign r = (* (neg a) b)  @7:3
+        Assign r = (neg (neg a))  @8:3
+        Assign r = (- a (neg b))  @9:3
+        Assign r = (/ (* a (- b c)) (neg (+ a 1)))  @10:3
+        If (or (and (< a b) (< b c)) (== c 0))  @11:3
+          then:
+            Assign r = 1  @11:34
+        If (and (not (< a b)) (!= b c))  @12:3
+          then:
+            Assign r = 2  @12:29
+        If (-> (< a b) (-> (< b c) (< c a)))  @13:3
+          then:
+            Assign r = 3  @13:32
+        If (-> (or (< a b) (< b c)) (> c 0))  @14:3
+          then:
+            Assign r = 4  @14:32
+        If (> (+ a b) c)  @15:3
+          then:
+            Assign r = 5  @15:20
+        If (and (> a b) (> b c))  @16:3
+          then:
+            Assign r = 6  @16:28
+        If (not (not false))  @17:3
+          then:
+            Assign r = 7  @17:22

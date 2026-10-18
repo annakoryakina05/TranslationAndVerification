@@ -1,0 +1,4 @@
+f() returns r: int {
+  g(1);
+  r = 1;
+}

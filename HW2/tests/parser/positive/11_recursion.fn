@@ -1,0 +1,13 @@
+// Recursion and nested calls
+fact(n: int)
+  requires n >= 0
+  returns r: int
+{
+  if (n == 0) r = 1; else r = n * fact(n - 1);
+}
+
+fib(n: int) returns r: int {
+  if (n < 2) { r = n; } else { r = fib(n - 1) + fib(n - 2); }
+}
+
+empty(x: int) returns r: int { }

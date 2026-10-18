@@ -1,0 +1,17 @@
+// Several errors in one file: the parser reports all of them
+gcd(x: int, y: int)
+  requires x > 0 and y > 0
+  returns r: int
+  uses a: int, b: int
+{
+  a = x
+  b = y;
+  while (a != b {
+    if (a > b) a = a - b; else b = b - a;
+  }
+  r = a + ;
+}
+
+ok(x: int) returns y: int {
+  if (x) y = 1;
+}

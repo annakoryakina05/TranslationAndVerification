@@ -1,0 +1,27 @@
+Module
+  Function f  @2:1
+    params:   x: int, y: int
+    requires: —
+    returns:  z: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @2:34
+        If (> x 0)  @3:3
+          then:
+            If (< y 0)  @3:14
+              then:
+                Assign z = 1  @3:25
+              else:
+                Assign z = 5  @3:37
+        If (> x 0)  @4:3
+          then:
+            Block  @4:14
+              If (< y 0)  @4:16
+                then:
+                  Assign z = 1  @4:27
+          else:
+            Assign z = 5  @4:41
+        If true  @5:3
+          then:
+            Assign z = 0  @5:13

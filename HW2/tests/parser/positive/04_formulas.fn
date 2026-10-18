@@ -1,0 +1,15 @@
+// Formulas, quantifiers, formula references, implication
+positive(x: int) => x > 0
+
+sorted(a: int[]) =>
+  forall(i: int | i >= 0 and i < length(a) - 1 -> a[i] <= a[i + 1])
+
+contains(a: int[], v: int) => exists(k: int | a[k] == v)
+
+findMax(a: int[])
+  requires length(a) > 0 and sorted(a)
+  returns m: int
+  ensures forall(i: int | i >= 0 and i < length(a) -> a[i] <= m) and contains(a, m)
+{
+  m = a[length(a) - 1];
+}

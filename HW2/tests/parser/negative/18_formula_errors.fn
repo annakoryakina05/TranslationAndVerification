@@ -1,0 +1,3 @@
+p(x: int) => 
+q(x: int) => forall(i int | i > 0)
+r(x: int) => x + 1

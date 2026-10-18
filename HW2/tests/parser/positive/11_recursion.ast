@@ -1,0 +1,37 @@
+Module
+  Function fact  @2:1
+    params:   n: int
+    requires: (>= n 0)
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @5:1
+        If (== n 0)  @6:3
+          then:
+            Assign r = 1  @6:15
+          else:
+            Assign r = (* n (call fact (- n 1)))  @6:27
+  Function fib  @9:1
+    params:   n: int
+    requires: —
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @9:28
+        If (< n 2)  @10:3
+          then:
+            Block  @10:14
+              Assign r = n  @10:16
+          else:
+            Block  @10:30
+              Assign r = (+ (call fib (- n 1)) (call fib (- n 2)))  @10:32
+  Function empty  @13:1
+    params:   x: int
+    requires: —
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @13:30

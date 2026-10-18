@@ -1,0 +1,5 @@
+f() returns r: int {
+  r = 1;
+  while (r < 10) {
+    r = r + 1;
+}

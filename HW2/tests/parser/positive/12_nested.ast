@@ -1,0 +1,26 @@
+Module
+  Function nested  @2:1
+    params:   n: int
+    requires: —
+    returns:  c: int
+    ensures:  —
+    uses:     i: int, j: int
+    body:
+      Block  @2:51
+        Assign c = 0  @3:3
+        Assign i = 0  @4:3
+        While (< i n)  @5:3
+          invariant: —
+          body:
+            Block  @5:17
+              Assign j = 0  @6:5
+              While (< j i)  @7:5
+                invariant: (<= j i)
+                body:
+                  Block  @7:36
+                    Block  @8:7
+                      Block  @8:9
+                        Assign c = (+ c 1)  @8:11
+                    Assign j = (+ j 1)  @9:7
+              Block  @11:5
+              Assign i = (+ i 1)  @12:5

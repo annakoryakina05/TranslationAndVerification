@@ -1,0 +1,78 @@
+# Спецификация токенов языка Funny (HW1).
+#
+# Формат строки:   [@skip|@error] ИМЯ = регулярное_выражение
+#   @skip  — токен распознаётся, но лексер его отбрасывает (пробелы, комментарии);
+#   @error — «ошибочный» токен: распознаётся автоматом, но сообщается как ошибка;
+#   без флага — обычный принимающий токен.
+#
+# Порядок строк = приоритет: при равной длине совпадения побеждает токен,
+# объявленный выше (поэтому ключевые слова стоят раньше IDENT).
+# Лексер работает по правилу «самого длинного совпадения» (maximal munch).
+#
+# Синтаксис regex: | * + ? ( ) [a-z] [^...] "литерал" . \n \t \r \xHH \d \w \s \<знак>
+# Алфавит — ASCII (коды 0..127); всё, что вне его, попадает в ловушку.
+
+# ---- ключевые слова ----
+# function/assert/assume/length — из списка задания HW1;
+# остальные — из спецификации языка (funny.md).
+KW_FUNCTION  = "function"
+KW_RETURNS   = "returns"
+KW_WHILE     = "while"
+KW_IF        = "if"
+KW_ELSE      = "else"
+KW_ASSERT    = "assert"
+KW_ASSUME    = "assume"
+KW_INVARIANT = "invariant"
+KW_LENGTH    = "length"
+KW_REQUIRES  = "requires"
+KW_ENSURES   = "ensures"
+KW_USES      = "uses"
+KW_INT       = "int"
+KW_TRUE      = "true"
+KW_FALSE     = "false"
+KW_NOT       = "not"
+KW_AND       = "and"
+KW_OR        = "or"
+KW_FORALL    = "forall"
+KW_EXISTS    = "exists"
+
+# ---- литералы и идентификаторы ----
+INT          = 0|[1-9][0-9]*
+@error BAD_INT = 0[0-9]+
+# по спецификации: латинская буква, затем буквы и цифры; '_' запрещён
+IDENT        = [A-Za-z][A-Za-z0-9]*
+
+# ---- пропускаемые ----
+@skip WS      = [ \t\r\n]+
+@skip COMMENT = "//"[^\r\n]*
+
+# ---- операторы сравнения и присваивания ----
+EQ           = "=="
+NE           = "!="
+LE           = "<="
+GE           = ">="
+LT           = "<"
+GT           = ">"
+ASSIGN       = "="
+
+# ---- логика и объявления ----
+ARROW        = "->"
+FAT_ARROW    = "=>"
+COLON        = ":"
+BAR          = "|"
+
+# ---- арифметика ----
+PLUS         = "+"
+MINUS        = "-"
+STAR         = "*"
+SLASH        = "/"
+
+# ---- разделители ----
+LPAREN       = "("
+RPAREN       = ")"
+LBRACKET     = "["
+RBRACKET     = "]"
+LBRACE       = "{"
+RBRACE       = "}"
+COMMA        = ","
+SEMI         = ";"

@@ -1,0 +1,9 @@
+Module
+  Function zero  @2:1
+    params:   —
+    requires: —
+    returns:  r: int
+    ensures:  —
+    uses:     —
+    body:
+      Assign r = 0  @2:23

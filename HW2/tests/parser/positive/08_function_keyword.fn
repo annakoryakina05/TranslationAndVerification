@@ -1,0 +1,6 @@
+// Extension: optional 'function' keyword before a function
+function inc(x: int) returns y: int y = x + 1;
+
+function twice(x: int) returns y: int {
+  y = inc(inc(x));
+}

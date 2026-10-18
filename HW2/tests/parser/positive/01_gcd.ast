@@ -1,0 +1,21 @@
+Module
+  Function gcd  @2:1
+    params:   x: int, y: int
+    requires: (and (> x 0) (> y 0))
+    returns:  r: int
+    ensures:  (> r 0)
+    uses:     a: int, b: int
+    body:
+      Block  @7:1
+        Assign a = x  @8:3
+        Assign b = y  @9:3
+        While (!= a b)  @10:3
+          invariant: (and (> a 0) (> b 0))
+          body:
+            Block  @12:3
+              If (> a b)  @13:5
+                then:
+                  Assign a = (- a b)  @14:7
+                else:
+                  Assign b = (- b a)  @16:7
+        Assign r = a  @18:3

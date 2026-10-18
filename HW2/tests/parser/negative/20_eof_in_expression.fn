@@ -1,0 +1,2 @@
+f() returns r: int {
+  r = 1 +

@@ -1,0 +1,103 @@
+# Финальная LL(1)-грамматика языка Funny (HW2).
+#
+# Формат:   нетерминал -> альтернатива | альтернатива ...
+#           строка, начинающаяся с '|', продолжает предыдущее правило.
+#   строчные имена  — нетерминалы;
+#   ЗАГЛАВНЫЕ имена — терминалы = имена токенов лексера из spec/funny.tokens;
+#   ε               — пустая строка.
+# Стартовый символ — первое правило; конец входа — '$' (токен EOF).
+#
+# Файл проверяется командой  python3 -m funny_parser grammar :
+# считаются FIRST/FOLLOW, строится LL(1)-таблица, печатаются конфликты.
+# Единственный конфликт — висячий else (else_opt / KW_ELSE), он разрешается
+# в пользу KW_ELSE, т.е. else относится к ближайшему if — как в спецификации.
+#
+# Парсер (funny_parser/parser.py) — рекурсивный спуск, одна функция на
+# нетерминал (хвостовые *_rest / *_list реализованы циклами while).
+
+# ------------------------------------------------------------- модуль
+module        -> decl decl_list
+decl_list     -> decl decl_list | ε
+
+# Общий префикс функции и формулы  IDENT ( params )  вынесен (левая факторизация),
+# выбор между ними делается по следующему токену: '=>' — формула,
+# 'requires'/'returns' — функция.
+decl          -> IDENT LPAREN param_list RPAREN decl_tail
+               | KW_FUNCTION IDENT LPAREN param_list RPAREN fn_tail
+decl_tail     -> FAT_ARROW expr
+               | fn_tail
+fn_tail       -> requires_opt KW_RETURNS var_def var_def_rest ensures_opt uses_opt statement
+
+requires_opt  -> KW_REQUIRES expr | ε
+ensures_opt   -> KW_ENSURES expr | ε
+uses_opt      -> KW_USES var_def var_def_rest | ε
+
+param_list    -> var_def var_def_rest | ε
+var_def_rest  -> COMMA var_def var_def_rest | ε
+var_def       -> IDENT COLON type
+type          -> KW_INT array_opt
+array_opt     -> LBRACKET RBRACKET | ε
+
+# ---------------------------------------------------------- операторы
+statement     -> block
+               | if_stmt
+               | while_stmt
+               | assert_stmt
+               | assume_stmt
+               | assign
+block         -> LBRACE stmt_list RBRACE
+stmt_list     -> statement stmt_list | ε
+
+if_stmt       -> KW_IF LPAREN expr RPAREN statement else_opt
+else_opt      -> KW_ELSE statement | ε
+
+while_stmt    -> KW_WHILE LPAREN expr RPAREN invariant_opt statement
+invariant_opt -> KW_INVARIANT expr | ε
+
+assert_stmt   -> KW_ASSERT expr SEMI
+assume_stmt   -> KW_ASSUME expr SEMI
+
+# Три формы присваивания начинаются с IDENT — общий префикс вынесен.
+#   x = e;          x[i] = e;  (сахар: x = store(x, i, e))     x, y = f(...);
+assign        -> IDENT assign_rest
+assign_rest   -> ASSIGN expr SEMI
+               | LBRACKET expr RBRACKET ASSIGN expr SEMI
+               | COMMA IDENT ident_list ASSIGN expr SEMI
+ident_list    -> COMMA IDENT ident_list | ε
+
+# -------------------------------------------------------- выражения
+# Единая грамматика для expr / condition / predicate (см. GRAMMAR.md, п. 3):
+# уровни приоритета снизу вверх, левая рекурсия устранена.
+#   ->   правоассоциативна        (самый низкий приоритет)
+#   or, and  левоассоциативны
+#   not  префиксный
+#   == != < <= > >=  без ассоциативности (не более одного сравнения)
+#   + -  левоассоциативны
+#   * /  левоассоциативны
+#   унарный -                     (самый высокий приоритет)
+expr          -> or_expr impl_rest
+impl_rest     -> ARROW expr | ε
+or_expr       -> and_expr or_rest
+or_rest       -> KW_OR and_expr or_rest | ε
+and_expr      -> not_expr and_rest
+and_rest      -> KW_AND not_expr and_rest | ε
+not_expr      -> KW_NOT not_expr | cmp_expr
+cmp_expr      -> add_expr cmp_rest
+cmp_rest      -> relop add_expr | ε
+relop         -> EQ | NE | LT | LE | GT | GE
+add_expr      -> mul_expr add_rest
+add_rest      -> PLUS mul_expr add_rest | MINUS mul_expr add_rest | ε
+mul_expr      -> unary mul_rest
+mul_rest      -> STAR unary mul_rest | SLASH unary mul_rest | ε
+unary         -> MINUS unary | primary
+primary       -> INT
+               | KW_TRUE
+               | KW_FALSE
+               | IDENT ident_suffix
+               | KW_LENGTH LPAREN args RPAREN
+               | quantifier LPAREN var_def BAR expr RPAREN
+               | LPAREN expr RPAREN
+quantifier    -> KW_FORALL | KW_EXISTS
+ident_suffix  -> LPAREN args RPAREN | LBRACKET expr RBRACKET | ε
+args          -> expr args_rest | ε
+args_rest     -> COMMA expr args_rest | ε

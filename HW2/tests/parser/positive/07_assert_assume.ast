@@ -1,0 +1,14 @@
+Module
+  Function check  @2:1
+    params:   x: int
+    requires: —
+    returns:  y: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @2:30
+        Assume (>= x 0)  @3:3
+        Assign y = (* x x)  @4:3
+        Assert (>= y 0)  @5:3
+        Assert (or (>= y x) (< x 1))  @6:3
+        Assert (forall (k int) (-> (> k y) (> k 0)))  @7:3

@@ -1,0 +1,16 @@
+{
+  "tokens": 48,
+  "nfa_states": 301,
+  "nfa_eps_edges": 165,
+  "nfa_char_edges": 144,
+  "alphabet_size": 129,
+  "char_classes": 45,
+  "dfa_states": 126,
+  "dfa_accepting": 123,
+  "min_dfa_states": 123,
+  "min_dfa_accepting": 120,
+  "min_dfa_trap": 122,
+  "moore_check_states": 123,
+  "min_equivalent_to_dfa": true,
+  "min_is_minimal": true
+}

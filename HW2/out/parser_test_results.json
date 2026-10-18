@@ -1,0 +1,1840 @@
+[
+ {
+  "group": "positive",
+  "name": "01_gcd.fn",
+  "input": "tests/parser/positive/01_gcd.fn",
+  "expected": "Module\n  Function gcd  @2:1\n    params:   x: int, y: int\n    requires: (and (> x 0) (> y 0))\n    returns:  r: int\n    ensures:  (> r 0)\n    uses:     a: int, b: int\n    body:\n      Block  @7:1\n        Assign a = x  @8:3\n        Assign b = y  @9:3\n        While (!= a b)  @10:3\n          invariant: (and (> a 0) (> b 0))\n          body:\n            Block  @12:3\n              If (> a b)  @13:5\n                then:\n                  Assign a = (- a b)  @14:7\n                else:\n                  Assign b = (- b a)  @16:7\n        Assign r = a  @18:3\n",
+  "actual": "Module\n  Function gcd  @2:1\n    params:   x: int, y: int\n    requires: (and (> x 0) (> y 0))\n    returns:  r: int\n    ensures:  (> r 0)\n    uses:     a: int, b: int\n    body:\n      Block  @7:1\n        Assign a = x  @8:3\n        Assign b = y  @9:3\n        While (!= a b)  @10:3\n          invariant: (and (> a 0) (> b 0))\n          body:\n            Block  @12:3\n              If (> a b)  @13:5\n                then:\n                  Assign a = (- a b)  @14:7\n                else:\n                  Assign b = (- b a)  @16:7\n        Assign r = a  @18:3\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "02_divide.fn",
+  "input": "tests/parser/positive/02_divide.fn",
+  "expected": "Module\n  Function divide  @2:1\n    params:   a: int, b: int\n    requires: (and (> b 0) (>= a 0))\n    returns:  q: int, r: int\n    ensures:  (and (and (== a (+ (* q b) r)) (>= r 0)) (< r b))\n    uses:     —\n    body:\n      Block  @6:1\n        Assign q = 0  @7:3\n        Assign r = a  @8:3\n        While (>= r b)  @9:3\n          invariant: (and (== a (+ (* q b) r)) (>= r 0))\n          body:\n            Block  @9:54\n              Assign q = (+ q 1)  @10:5\n              Assign r = (- r b)  @11:5\n  Function useDivide  @15:1\n    params:   x: int\n    requires: —\n    returns:  s: int\n    ensures:  —\n    uses:     q: int, r: int\n    body:\n      Block  @15:54\n        Assign q, r = (call divide x 7)  @16:3\n        Assign s = (+ q r)  @17:3\n",
+  "actual": "Module\n  Function divide  @2:1\n    params:   a: int, b: int\n    requires: (and (> b 0) (>= a 0))\n    returns:  q: int, r: int\n    ensures:  (and (and (== a (+ (* q b) r)) (>= r 0)) (< r b))\n    uses:     —\n    body:\n      Block  @6:1\n        Assign q = 0  @7:3\n        Assign r = a  @8:3\n        While (>= r b)  @9:3\n          invariant: (and (== a (+ (* q b) r)) (>= r 0))\n          body:\n            Block  @9:54\n              Assign q = (+ q 1)  @10:5\n              Assign r = (- r b)  @11:5\n  Function useDivide  @15:1\n    params:   x: int\n    requires: —\n    returns:  s: int\n    ensures:  —\n    uses:     q: int, r: int\n    body:\n      Block  @15:54\n        Assign q, r = (call divide x 7)  @16:3\n        Assign s = (+ q r)  @17:3\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "03_arrays.fn",
+  "input": "tests/parser/positive/03_arrays.fn",
+  "expected": "Module\n  Function copyInc  @2:1\n    params:   a: int[]\n    requires: —\n    returns:  b: int[]\n    ensures:  —\n    uses:     i: int\n    body:\n      Block  @5:1\n        Assign b = a  @6:3\n        Assign i = 0  @7:3\n        While (< i (call length a))  @8:3\n          invariant: (and (>= i 0) (<= i (call length a)))\n          body:\n            Block  @8:61\n              Assign b = (store b i (+ (index a i) 1))  @9:5\n              Assign i = (+ i 1)  @10:5\n  Function sum  @14:1\n    params:   a: int[]\n    requires: —\n    returns:  s: int\n    ensures:  —\n    uses:     i: int\n    body:\n      Block  @14:42\n        Assign s = 0  @15:3\n        Assign i = 0  @16:3\n        While (< i (call length a))  @17:3\n          invariant: —\n          body:\n            Block  @17:25\n              Assign s = (+ s (index a (- (* i 2) 1)))  @18:5\n              Assign i = (+ i 1)  @19:5\n",
+  "actual": "Module\n  Function copyInc  @2:1\n    params:   a: int[]\n    requires: —\n    returns:  b: int[]\n    ensures:  —\n    uses:     i: int\n    body:\n      Block  @5:1\n        Assign b = a  @6:3\n        Assign i = 0  @7:3\n        While (< i (call length a))  @8:3\n          invariant: (and (>= i 0) (<= i (call length a)))\n          body:\n            Block  @8:61\n              Assign b = (store b i (+ (index a i) 1))  @9:5\n              Assign i = (+ i 1)  @10:5\n  Function sum  @14:1\n    params:   a: int[]\n    requires: —\n    returns:  s: int\n    ensures:  —\n    uses:     i: int\n    body:\n      Block  @14:42\n        Assign s = 0  @15:3\n        Assign i = 0  @16:3\n        While (< i (call length a))  @17:3\n          invariant: —\n          body:\n            Block  @17:25\n              Assign s = (+ s (index a (- (* i 2) 1)))  @18:5\n              Assign i = (+ i 1)  @19:5\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "04_formulas.fn",
+  "input": "tests/parser/positive/04_formulas.fn",
+  "expected": "Module\n  Formula positive  @2:1\n    params: x: int\n    body:   (> x 0)\n  Formula sorted  @4:1\n    params: a: int[]\n    body:   (forall (i int) (-> (and (>= i 0) (< i (- (call length a) 1))) (<= (index a i) (index a (+ i 1)))))\n  Formula contains  @7:1\n    params: a: int[], v: int\n    body:   (exists (k int) (== (index a k) v))\n  Function findMax  @9:1\n    params:   a: int[]\n    requires: (and (> (call length a) 0) (formula sorted a))\n    returns:  m: int\n    ensures:  (and (forall (i int) (-> (and (>= i 0) (< i (call length a))) (<= (index a i) m))) (formula contains a m))\n    uses:     —\n    body:\n      Block  @13:1\n        Assign m = (index a (- (call length a) 1))  @14:3\n",
+  "actual": "Module\n  Formula positive  @2:1\n    params: x: int\n    body:   (> x 0)\n  Formula sorted  @4:1\n    params: a: int[]\n    body:   (forall (i int) (-> (and (>= i 0) (< i (- (call length a) 1))) (<= (index a i) (index a (+ i 1)))))\n  Formula contains  @7:1\n    params: a: int[], v: int\n    body:   (exists (k int) (== (index a k) v))\n  Function findMax  @9:1\n    params:   a: int[]\n    requires: (and (> (call length a) 0) (formula sorted a))\n    returns:  m: int\n    ensures:  (and (forall (i int) (-> (and (>= i 0) (< i (call length a))) (<= (index a i) m))) (formula contains a m))\n    uses:     —\n    body:\n      Block  @13:1\n        Assign m = (index a (- (call length a) 1))  @14:3\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "05_dangling_else.fn",
+  "input": "tests/parser/positive/05_dangling_else.fn",
+  "expected": "Module\n  Function f  @2:1\n    params:   x: int, y: int\n    requires: —\n    returns:  z: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:34\n        If (> x 0)  @3:3\n          then:\n            If (< y 0)  @3:14\n              then:\n                Assign z = 1  @3:25\n              else:\n                Assign z = 5  @3:37\n        If (> x 0)  @4:3\n          then:\n            Block  @4:14\n              If (< y 0)  @4:16\n                then:\n                  Assign z = 1  @4:27\n          else:\n            Assign z = 5  @4:41\n        If true  @5:3\n          then:\n            Assign z = 0  @5:13\n",
+  "actual": "Module\n  Function f  @2:1\n    params:   x: int, y: int\n    requires: —\n    returns:  z: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:34\n        If (> x 0)  @3:3\n          then:\n            If (< y 0)  @3:14\n              then:\n                Assign z = 1  @3:25\n              else:\n                Assign z = 5  @3:37\n        If (> x 0)  @4:3\n          then:\n            Block  @4:14\n              If (< y 0)  @4:16\n                then:\n                  Assign z = 1  @4:27\n          else:\n            Assign z = 5  @4:41\n        If true  @5:3\n          then:\n            Assign z = 0  @5:13\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "06_precedence.fn",
+  "input": "tests/parser/positive/06_precedence.fn",
+  "expected": "Module\n  Function calc  @2:1\n    params:   a: int, b: int, c: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:45\n        Assign r = (+ a (* b c))  @3:3\n        Assign r = (* (+ a b) c)  @4:3\n        Assign r = (- (- a b) c)  @5:3\n        Assign r = (/ (/ a b) c)  @6:3\n        Assign r = (* (neg a) b)  @7:3\n        Assign r = (neg (neg a))  @8:3\n        Assign r = (- a (neg b))  @9:3\n        Assign r = (/ (* a (- b c)) (neg (+ a 1)))  @10:3\n        If (or (and (< a b) (< b c)) (== c 0))  @11:3\n          then:\n            Assign r = 1  @11:34\n        If (and (not (< a b)) (!= b c))  @12:3\n          then:\n            Assign r = 2  @12:29\n        If (-> (< a b) (-> (< b c) (< c a)))  @13:3\n          then:\n            Assign r = 3  @13:32\n        If (-> (or (< a b) (< b c)) (> c 0))  @14:3\n          then:\n            Assign r = 4  @14:32\n        If (> (+ a b) c)  @15:3\n          then:\n            Assign r = 5  @15:20\n        If (and (> a b) (> b c))  @16:3\n          then:\n            Assign r = 6  @16:28\n        If (not (not false))  @17:3\n          then:\n            Assign r = 7  @17:22\n",
+  "actual": "Module\n  Function calc  @2:1\n    params:   a: int, b: int, c: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:45\n        Assign r = (+ a (* b c))  @3:3\n        Assign r = (* (+ a b) c)  @4:3\n        Assign r = (- (- a b) c)  @5:3\n        Assign r = (/ (/ a b) c)  @6:3\n        Assign r = (* (neg a) b)  @7:3\n        Assign r = (neg (neg a))  @8:3\n        Assign r = (- a (neg b))  @9:3\n        Assign r = (/ (* a (- b c)) (neg (+ a 1)))  @10:3\n        If (or (and (< a b) (< b c)) (== c 0))  @11:3\n          then:\n            Assign r = 1  @11:34\n        If (and (not (< a b)) (!= b c))  @12:3\n          then:\n            Assign r = 2  @12:29\n        If (-> (< a b) (-> (< b c) (< c a)))  @13:3\n          then:\n            Assign r = 3  @13:32\n        If (-> (or (< a b) (< b c)) (> c 0))  @14:3\n          then:\n            Assign r = 4  @14:32\n        If (> (+ a b) c)  @15:3\n          then:\n            Assign r = 5  @15:20\n        If (and (> a b) (> b c))  @16:3\n          then:\n            Assign r = 6  @16:28\n        If (not (not false))  @17:3\n          then:\n            Assign r = 7  @17:22\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "07_assert_assume.fn",
+  "input": "tests/parser/positive/07_assert_assume.fn",
+  "expected": "Module\n  Function check  @2:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:30\n        Assume (>= x 0)  @3:3\n        Assign y = (* x x)  @4:3\n        Assert (>= y 0)  @5:3\n        Assert (or (>= y x) (< x 1))  @6:3\n        Assert (forall (k int) (-> (> k y) (> k 0)))  @7:3\n",
+  "actual": "Module\n  Function check  @2:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:30\n        Assume (>= x 0)  @3:3\n        Assign y = (* x x)  @4:3\n        Assert (>= y 0)  @5:3\n        Assert (or (>= y x) (< x 1))  @6:3\n        Assert (forall (k int) (-> (> k y) (> k 0)))  @7:3\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "08_function_keyword.fn",
+  "input": "tests/parser/positive/08_function_keyword.fn",
+  "expected": "Module\n  Function inc  @2:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Assign y = (+ x 1)  @2:37\n  Function twice  @4:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @4:39\n        Assign y = (call inc (call inc x))  @5:3\n",
+  "actual": "Module\n  Function inc  @2:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Assign y = (+ x 1)  @2:37\n  Function twice  @4:1\n    params:   x: int\n    requires: —\n    returns:  y: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @4:39\n        Assign y = (call inc (call inc x))  @5:3\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "09_minimal.fn",
+  "input": "tests/parser/positive/09_minimal.fn",
+  "expected": "Module\n  Function zero  @2:1\n    params:   —\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Assign r = 0  @2:23\n",
+  "actual": "Module\n  Function zero  @2:1\n    params:   —\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Assign r = 0  @2:23\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "10_whitespace_crlf.fn",
+  "input": "tests/parser/positive/10_whitespace_crlf.fn",
+  "expected": "Module\n  Function f  @2:1\n    params:   x: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:22\n        Assign r = x  @3:2\n        If (> x 0)  @4:2\n          then:\n            Block  @4:9\n              Assign r = 1  @4:10\n          else:\n            Block  @4:19\n",
+  "actual": "Module\n  Function f  @2:1\n    params:   x: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @2:22\n        Assign r = x  @3:2\n        If (> x 0)  @4:2\n          then:\n            Block  @4:9\n              Assign r = 1  @4:10\n          else:\n            Block  @4:19\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "11_recursion.fn",
+  "input": "tests/parser/positive/11_recursion.fn",
+  "expected": "Module\n  Function fact  @2:1\n    params:   n: int\n    requires: (>= n 0)\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @5:1\n        If (== n 0)  @6:3\n          then:\n            Assign r = 1  @6:15\n          else:\n            Assign r = (* n (call fact (- n 1)))  @6:27\n  Function fib  @9:1\n    params:   n: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @9:28\n        If (< n 2)  @10:3\n          then:\n            Block  @10:14\n              Assign r = n  @10:16\n          else:\n            Block  @10:30\n              Assign r = (+ (call fib (- n 1)) (call fib (- n 2)))  @10:32\n  Function empty  @13:1\n    params:   x: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @13:30\n",
+  "actual": "Module\n  Function fact  @2:1\n    params:   n: int\n    requires: (>= n 0)\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @5:1\n        If (== n 0)  @6:3\n          then:\n            Assign r = 1  @6:15\n          else:\n            Assign r = (* n (call fact (- n 1)))  @6:27\n  Function fib  @9:1\n    params:   n: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @9:28\n        If (< n 2)  @10:3\n          then:\n            Block  @10:14\n              Assign r = n  @10:16\n          else:\n            Block  @10:30\n              Assign r = (+ (call fib (- n 1)) (call fib (- n 2)))  @10:32\n  Function empty  @13:1\n    params:   x: int\n    requires: —\n    returns:  r: int\n    ensures:  —\n    uses:     —\n    body:\n      Block  @13:30\n",
+  "status": "PASS"
+ },
+ {
+  "group": "positive",
+  "name": "12_nested.fn",
+  "input": "tests/parser/positive/12_nested.fn",
+  "expected": "Module\n  Function nested  @2:1\n    params:   n: int\n    requires: —\n    returns:  c: int\n    ensures:  —\n    uses:     i: int, j: int\n    body:\n      Block  @2:51\n        Assign c = 0  @3:3\n        Assign i = 0  @4:3\n        While (< i n)  @5:3\n          invariant: —\n          body:\n            Block  @5:17\n              Assign j = 0  @6:5\n              While (< j i)  @7:5\n                invariant: (<= j i)\n                body:\n                  Block  @7:36\n                    Block  @8:7\n                      Block  @8:9\n                        Assign c = (+ c 1)  @8:11\n                    Assign j = (+ j 1)  @9:7\n              Block  @11:5\n              Assign i = (+ i 1)  @12:5\n",
+  "actual": "Module\n  Function nested  @2:1\n    params:   n: int\n    requires: —\n    returns:  c: int\n    ensures:  —\n    uses:     i: int, j: int\n    body:\n      Block  @2:51\n        Assign c = 0  @3:3\n        Assign i = 0  @4:3\n        While (< i n)  @5:3\n          invariant: —\n          body:\n            Block  @5:17\n              Assign j = 0  @6:5\n              While (< j i)  @7:5\n                invariant: (<= j i)\n                body:\n                  Block  @7:36\n                    Block  @8:7\n                      Block  @8:9\n                        Assign c = (+ c 1)  @8:11\n                    Assign j = (+ j 1)  @9:7\n              Block  @11:5\n              Assign i = (+ i 1)  @12:5\n",
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "01_empty.fn",
+  "input": "tests/parser/negative/01_empty.fn",
+  "expected": [
+   "1:1: пустой ввод: ожидалось объявление функции или формулы"
+  ],
+  "actual": [
+   "1:1: пустой ввод: ожидалось объявление функции или формулы"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "02_only_comment.fn",
+  "input": "tests/parser/negative/02_only_comment.fn",
+  "expected": [
+   "3:1: пустой ввод: ожидалось объявление функции или формулы"
+  ],
+  "actual": [
+   "3:1: пустой ввод: ожидалось объявление функции или формулы"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "03_unclosed_brace.fn",
+  "input": "tests/parser/negative/03_unclosed_brace.fn",
+  "expected": [
+   "6:1: ожидалось '}' для блока, открытого в 1:20, найдено конец файла"
+  ],
+  "actual": [
+   "6:1: ожидалось '}' для блока, открытого в 1:20, найдено конец файла"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "04_unclosed_paren.fn",
+  "input": "tests/parser/negative/04_unclosed_paren.fn",
+  "expected": [
+   "2:13: ожидалось ')' для '(' из 2:6, найдено '{'",
+   "3:13: ожидалось ')' для '(' из 3:7, найдено ';'"
+  ],
+  "actual": [
+   "2:13: ожидалось ')' для '(' из 2:6, найдено '{'",
+   "3:13: ожидалось ')' для '(' из 3:7, найдено ';'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "05_unclosed_call.fn",
+  "input": "tests/parser/negative/05_unclosed_call.fn",
+  "expected": [
+   "2:13: ожидалось ')' или ',' в списке аргументов (открыт в 2:8), найдено ';'"
+  ],
+  "actual": [
+   "2:13: ожидалось ')' или ',' в списке аргументов (открыт в 2:8), найдено ';'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "06_extra_tokens.fn",
+  "input": "tests/parser/negative/06_extra_tokens.fn",
+  "expected": [
+   "2:9: ожидалось ';' в конце присваивания, найдено число '2'",
+   "3:10: ожидалось ';' в конце присваивания, найдено ')'",
+   "6:1: ожидалось объявление функции или формулы, найдено '}'"
+  ],
+  "actual": [
+   "2:9: ожидалось ';' в конце присваивания, найдено число '2'",
+   "3:10: ожидалось ';' в конце присваивания, найдено ')'",
+   "6:1: ожидалось объявление функции или формулы, найдено '}'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "07_bad_operators.fn",
+  "input": "tests/parser/negative/07_bad_operators.fn",
+  "expected": [
+   "2:10: ожидалось выражение, найдено '*'",
+   "3:9: ожидалось ')' для '(' из 3:6, найдено '='",
+   "4:10: ожидалось выражение, найдено '>'",
+   "5:5: ожидалось '=', '[' или ',' после 'r', найдено ':'",
+   "6:5: ожидалось '=', '[' или ',' после 'r', найдено '+'",
+   "7:14: недопустимые символы '&&'",
+   "7:17: ожидалось ')' для '(' из 7:6, найдено идентификатор 'a'"
+  ],
+  "actual": [
+   "2:10: ожидалось выражение, найдено '*'",
+   "3:9: ожидалось ')' для '(' из 3:6, найдено '='",
+   "4:10: ожидалось выражение, найдено '>'",
+   "5:5: ожидалось '=', '[' или ',' после 'r', найдено ':'",
+   "6:5: ожидалось '=', '[' или ',' после 'r', найдено '+'",
+   "7:14: недопустимые символы '&&'",
+   "7:17: ожидалось ')' для '(' из 7:6, найдено идентификатор 'a'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "08_missing_semicolon.fn",
+  "input": "tests/parser/negative/08_missing_semicolon.fn",
+  "expected": [
+   "3:3: ожидалось ';' в конце присваивания, найдено идентификатор 'r'",
+   "5:1: ожидалось ';' в конце 'assert', найдено '}'"
+  ],
+  "actual": [
+   "3:3: ожидалось ';' в конце присваивания, найдено идентификатор 'r'",
+   "5:1: ожидалось ';' в конце 'assert', найдено '}'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "09_header_errors.fn",
+  "input": "tests/parser/negative/09_header_errors.fn",
+  "expected": [
+   "1:19: ожидалось 'requires', 'returns' или '=>', найдено 'ensures'",
+   "2:12: ожидалось 'int' (тип: int или int[]), найдено идентификатор 'string'",
+   "3:11: ожидалось ':' (после имени переменной), найдено 'int'"
+  ],
+  "actual": [
+   "1:19: ожидалось 'requires', 'returns' или '=>', найдено 'ensures'",
+   "2:12: ожидалось 'int' (тип: int или int[]), найдено идентификатор 'string'",
+   "3:11: ожидалось ':' (после имени переменной), найдено 'int'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "10_chained_compare.fn",
+  "input": "tests/parser/negative/10_chained_compare.fn",
+  "expected": [
+   "2:13: сравнения нельзя записывать цепочкой: лишний '<' (используйте 'and')",
+   "3:14: сравнения нельзя записывать цепочкой: лишний '<=' (используйте 'and')"
+  ],
+  "actual": [
+   "2:13: сравнения нельзя записывать цепочкой: лишний '<' (используйте 'and')",
+   "3:14: сравнения нельзя записывать цепочкой: лишний '<=' (используйте 'and')"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "11_wrong_kinds.fn",
+  "input": "tests/parser/negative/11_wrong_kinds.fn",
+  "expected": [
+   "2:7: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная",
+   "3:7: ожидалось целочисленное выражение, найдено: сравнение",
+   "4:10: квантор 'forall' допустим только в предикатах (requires/ensures/invariant/assert/assume/формула), не в условии",
+   "5:7: 'p(...)' в условии: ссылки на формулы допустимы только в предикатах, а вызов функции не является условием",
+   "6:10: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: арифметическое выражение",
+   "7:7: ожидалось целочисленное выражение, найдено: логическая константа",
+   "8:7: ожидалось целочисленное выражение, найдено: отрицание"
+  ],
+  "actual": [
+   "2:7: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная",
+   "3:7: ожидалось целочисленное выражение, найдено: сравнение",
+   "4:10: квантор 'forall' допустим только в предикатах (requires/ensures/invariant/assert/assume/формула), не в условии",
+   "5:7: 'p(...)' в условии: ссылки на формулы допустимы только в предикатах, а вызов функции не является условием",
+   "6:10: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: арифметическое выражение",
+   "7:7: ожидалось целочисленное выражение, найдено: логическая константа",
+   "8:7: ожидалось целочисленное выражение, найдено: отрицание"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "12_lexical.fn",
+  "input": "tests/parser/negative/12_lexical.fn",
+  "expected": [
+   "2:7: число с ведущим нулём '01'",
+   "3:7: недопустимый символ 'é'",
+   "3:8: ожидалось выражение, найдено ';'",
+   "4:4: недопустимый символ '_'",
+   "4:5: ожидалось '=', '[' или ',' после 'r', найдено число '1'",
+   "5:13: недопустимый символ 'к' в комментарии (допустимы только ASCII-символы); остаток строки пропущен",
+   "6:9: недопустимые символы '&&'",
+   "6:12: ожидалось ';' в конце присваивания, найдено число '3'"
+  ],
+  "actual": [
+   "2:7: число с ведущим нулём '01'",
+   "3:7: недопустимый символ 'é'",
+   "3:8: ожидалось выражение, найдено ';'",
+   "4:4: недопустимый символ '_'",
+   "4:5: ожидалось '=', '[' или ',' после 'r', найдено число '1'",
+   "5:13: недопустимый символ 'к' в комментарии (допустимы только ASCII-символы); остаток строки пропущен",
+   "6:9: недопустимые символы '&&'",
+   "6:12: ожидалось ';' в конце присваивания, найдено число '3'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "13_tuple_assign.fn",
+  "input": "tests/parser/negative/13_tuple_assign.fn",
+  "expected": [
+   "2:10: в кортежном присваивании справа должен быть вызов функции",
+   "3:10: в кортежном присваивании справа должен быть вызов функции",
+   "4:6: ожидалось идентификатор (имя переменной в кортежном присваивании), найдено '='"
+  ],
+  "actual": [
+   "2:10: в кортежном присваивании справа должен быть вызов функции",
+   "3:10: в кортежном присваивании справа должен быть вызов функции",
+   "4:6: ожидалось идентификатор (имя переменной в кортежном присваивании), найдено '='"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "14_else_without_if.fn",
+  "input": "tests/parser/negative/14_else_without_if.fn",
+  "expected": [
+   "2:3: ожидался оператор (присваивание, if, while, assert, assume или блок), найдено 'else' ('else' без 'if')"
+  ],
+  "actual": [
+   "2:3: ожидался оператор (присваивание, if, while, assert, assume или блок), найдено 'else' ('else' без 'if')"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "15_top_level_garbage.fn",
+  "input": "tests/parser/negative/15_top_level_garbage.fn",
+  "expected": [
+   "1:1: ожидалось объявление функции или формулы, найдено ';'",
+   "3:1: ожидалось объявление функции или формулы, найдено ')'"
+  ],
+  "actual": [
+   "1:1: ожидалось объявление функции или формулы, найдено ';'",
+   "3:1: ожидалось объявление функции или формулы, найдено ')'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "16_many_errors_recovery.fn",
+  "input": "tests/parser/negative/16_many_errors_recovery.fn",
+  "expected": [
+   "2:7: ожидалось выражение, найдено ';'",
+   "3:6: ожидалось '(' после 'if', найдено идентификатор 'x'",
+   "4:10: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная",
+   "4:22: ожидалось выражение, найдено ';'",
+   "10:7: ожидалось выражение, найдено ']'"
+  ],
+  "actual": [
+   "2:7: ожидалось выражение, найдено ';'",
+   "3:6: ожидалось '(' после 'if', найдено идентификатор 'x'",
+   "4:10: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная",
+   "4:22: ожидалось выражение, найдено ';'",
+   "10:7: ожидалось выражение, найдено ']'"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "17_array_errors.fn",
+  "input": "tests/parser/negative/17_array_errors.fn",
+  "expected": [
+   "2:10: ожидалось ']' для '[' из 2:8, найдено ';'",
+   "3:5: ожидалось выражение, найдено ']'",
+   "4:11: ожидалось ';' в конце присваивания, найдено '['"
+  ],
+  "actual": [
+   "2:10: ожидалось ']' для '[' из 2:8, найдено ';'",
+   "3:5: ожидалось выражение, найдено ']'",
+   "4:11: ожидалось ';' в конце присваивания, найдено '['"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "18_formula_errors.fn",
+  "input": "tests/parser/negative/18_formula_errors.fn",
+  "expected": [
+   "2:4: ожидалось ')' или ',' в списке аргументов (открыт в 2:2), найдено ':'",
+   "3:14: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: арифметическое выражение"
+  ],
+  "actual": [
+   "2:4: ожидалось ')' или ',' в списке аргументов (открыт в 2:2), найдено ':'",
+   "3:14: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: арифметическое выражение"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "19_statement_call.fn",
+  "input": "tests/parser/negative/19_statement_call.fn",
+  "expected": [
+   "2:4: ожидалось '=', '[' или ',' после 'g', найдено '('"
+  ],
+  "actual": [
+   "2:4: ожидалось '=', '[' или ',' после 'g', найдено '('"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "negative",
+  "name": "20_eof_in_expression.fn",
+  "input": "tests/parser/negative/20_eof_in_expression.fn",
+  "expected": [
+   "2:10: ожидалось выражение, найдено конец файла"
+  ],
+  "actual": [
+   "2:10: ожидалось выражение, найдено конец файла"
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "expr",
+  "name": "a + b * c",
+  "input": "a + b * c",
+  "expected": "(+ a (* b c))",
+  "actual": "(+ a (* b c))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a * b + c",
+  "input": "a * b + c",
+  "expected": "(+ (* a b) c)",
+  "actual": "(+ (* a b) c)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "(a + b) * c",
+  "input": "(a + b) * c",
+  "expected": "(* (+ a b) c)",
+  "actual": "(* (+ a b) c)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a - b - c",
+  "input": "a - b - c",
+  "expected": "(- (- a b) c)",
+  "actual": "(- (- a b) c)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a / b / c",
+  "input": "a / b / c",
+  "expected": "(/ (/ a b) c)",
+  "actual": "(/ (/ a b) c)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a - b + c",
+  "input": "a - b + c",
+  "expected": "(+ (- a b) c)",
+  "actual": "(+ (- a b) c)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a * b / c * d",
+  "input": "a * b / c * d",
+  "expected": "(* (/ (* a b) c) d)",
+  "actual": "(* (/ (* a b) c) d)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "-a * b",
+  "input": "-a * b",
+  "expected": "(* (neg a) b)",
+  "actual": "(* (neg a) b)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "-a + -b",
+  "input": "-a + -b",
+  "expected": "(+ (neg a) (neg b))",
+  "actual": "(+ (neg a) (neg b))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "- -a",
+  "input": "- -a",
+  "expected": "(neg (neg a))",
+  "actual": "(neg (neg a))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a - -b",
+  "input": "a - -b",
+  "expected": "(- a (neg b))",
+  "actual": "(- a (neg b))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "-(a + b)",
+  "input": "-(a + b)",
+  "expected": "(neg (+ a b))",
+  "actual": "(neg (+ a b))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "((((a))))",
+  "input": "((((a))))",
+  "expected": "a",
+  "actual": "a",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "42",
+  "input": "42",
+  "expected": "42",
+  "actual": "42",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "0",
+  "input": "0",
+  "expected": "0",
+  "actual": "0",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "f()",
+  "input": "f()",
+  "expected": "(call f)",
+  "actual": "(call f)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "f(a, b + 1, g(c))",
+  "input": "f(a, b + 1, g(c))",
+  "expected": "(call f a (+ b 1) (call g c))",
+  "actual": "(call f a (+ b 1) (call g c))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a[i + 1] * 2",
+  "input": "a[i + 1] * 2",
+  "expected": "(* (index a (+ i 1)) 2)",
+  "actual": "(* (index a (+ i 1)) 2)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a[b[i]]",
+  "input": "a[b[i]]",
+  "expected": "(index a (index b i))",
+  "actual": "(index a (index b i))",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "length(a) - 1",
+  "input": "length(a) - 1",
+  "expected": "(- (call length a) 1)",
+  "actual": "(- (call length a) 1)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "x1 + Y2z",
+  "input": "x1 + Y2z",
+  "expected": "(+ x1 Y2z)",
+  "actual": "(+ x1 Y2z)",
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a < b",
+  "input": "a < b",
+  "expected": "(< a b)",
+  "actual": "(< a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a + 1 <= b * 2",
+  "input": "a + 1 <= b * 2",
+  "expected": "(<= (+ a 1) (* b 2))",
+  "actual": "(<= (+ a 1) (* b 2))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a == b",
+  "input": "a == b",
+  "expected": "(== a b)",
+  "actual": "(== a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a != b",
+  "input": "a != b",
+  "expected": "(!= a b)",
+  "actual": "(!= a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a >= b",
+  "input": "a >= b",
+  "expected": "(>= a b)",
+  "actual": "(>= a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a > b",
+  "input": "a > b",
+  "expected": "(> a b)",
+  "actual": "(> a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "true",
+  "input": "true",
+  "expected": "true",
+  "actual": "true",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "false or true",
+  "input": "false or true",
+  "expected": "(or false true)",
+  "actual": "(or false true)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b and c < d or e < f",
+  "input": "a < b and c < d or e < f",
+  "expected": "(or (and (< a b) (< c d)) (< e f))",
+  "actual": "(or (and (< a b) (< c d)) (< e f))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b or c < d and e < f",
+  "input": "a < b or c < d and e < f",
+  "expected": "(or (< a b) (and (< c d) (< e f)))",
+  "actual": "(or (< a b) (and (< c d) (< e f)))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "true and false and true",
+  "input": "true and false and true",
+  "expected": "(and (and true false) true)",
+  "actual": "(and (and true false) true)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "true or false or true",
+  "input": "true or false or true",
+  "expected": "(or (or true false) true)",
+  "actual": "(or (or true false) true)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "not a < b and c < d",
+  "input": "not a < b and c < d",
+  "expected": "(and (not (< a b)) (< c d))",
+  "actual": "(and (not (< a b)) (< c d))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "not not true",
+  "input": "not not true",
+  "expected": "(not (not true))",
+  "actual": "(not (not true))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "not (a < b and c < d)",
+  "input": "not (a < b and c < d)",
+  "expected": "(not (and (< a b) (< c d)))",
+  "actual": "(not (and (< a b) (< c d)))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b -> c < d -> e < f",
+  "input": "a < b -> c < d -> e < f",
+  "expected": "(-> (< a b) (-> (< c d) (< e f)))",
+  "actual": "(-> (< a b) (-> (< c d) (< e f)))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b or c < d -> e < f",
+  "input": "a < b or c < d -> e < f",
+  "expected": "(-> (or (< a b) (< c d)) (< e f))",
+  "actual": "(-> (or (< a b) (< c d)) (< e f))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "(true -> false) -> true",
+  "input": "(true -> false) -> true",
+  "expected": "(-> (-> true false) true)",
+  "actual": "(-> (-> true false) true)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "(a + b) > c",
+  "input": "(a + b) > c",
+  "expected": "(> (+ a b) c)",
+  "actual": "(> (+ a b) c)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "(a > b) and (b > c)",
+  "input": "(a > b) and (b > c)",
+  "expected": "(and (> a b) (> b c))",
+  "actual": "(and (> a b) (> b c))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "((a > b))",
+  "input": "((a > b))",
+  "expected": "(> a b)",
+  "actual": "(> a b)",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "-a < -(b)",
+  "input": "-a < -(b)",
+  "expected": "(< (neg a) (neg b))",
+  "actual": "(< (neg a) (neg b))",
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | a[i] >= 0)",
+  "input": "forall(i: int | a[i] >= 0)",
+  "expected": "(forall (i int) (>= (index a i) 0))",
+  "actual": "(forall (i int) (>= (index a i) 0))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "exists(a: int[] | length(a) == 0)",
+  "input": "exists(a: int[] | length(a) == 0)",
+  "expected": "(exists (a int[]) (== (call length a) 0))",
+  "actual": "(exists (a int[]) (== (call length a) 0))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "p(x) and q(y, 1)",
+  "input": "p(x) and q(y, 1)",
+  "expected": "(and (formula p x) (formula q y 1))",
+  "actual": "(and (formula p x) (formula q y 1))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "not p(x)",
+  "input": "not p(x)",
+  "expected": "(not (formula p x))",
+  "actual": "(not (formula p x))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "f(x) > 0 and p(f(x))",
+  "input": "f(x) > 0 and p(f(x))",
+  "expected": "(and (> (call f x) 0) (formula p (call f x)))",
+  "actual": "(and (> (call f x) 0) (formula p (call f x)))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | exists(j: int | i < j))",
+  "input": "forall(i: int | exists(j: int | i < j))",
+  "expected": "(forall (i int) (exists (j int) (< i j)))",
+  "actual": "(forall (i int) (exists (j int) (< i j)))",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | i > 0) -> true",
+  "input": "forall(i: int | i > 0) -> true",
+  "expected": "(-> (forall (i int) (> i 0)) true)",
+  "actual": "(-> (forall (i int) (> i 0)) true)",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "x > 0",
+  "input": "x > 0",
+  "expected": "(> x 0)",
+  "actual": "(> x 0)",
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "",
+  "input": "",
+  "expected": {
+   "error": "ожидалось выражение, найдено конец файла"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось выражение, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a +",
+  "input": "a +",
+  "expected": {
+   "error": "ожидалось выражение, найдено конец файла"
+  },
+  "actual": {
+   "error": [
+    "1:4: ожидалось выражение, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a b",
+  "input": "a b",
+  "expected": {
+   "error": "лишний токен после выражения"
+  },
+  "actual": {
+   "error": [
+    "1:3: лишний токен после выражения: идентификатор 'b'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "(a + b",
+  "input": "(a + b",
+  "expected": {
+   "error": "ожидалось ')' для '(' из 1:1"
+  },
+  "actual": {
+   "error": [
+    "1:7: ожидалось ')' для '(' из 1:1, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a + b)",
+  "input": "a + b)",
+  "expected": {
+   "error": "лишний токен после выражения: ')'"
+  },
+  "actual": {
+   "error": [
+    "1:6: лишний токен после выражения: ')'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "f(a b)",
+  "input": "f(a b)",
+  "expected": {
+   "error": "ожидалось ')' или ','"
+  },
+  "actual": {
+   "error": [
+    "1:5: ожидалось ')' или ',' в списке аргументов (открыт в 1:2), найдено идентификатор 'b'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a[1",
+  "input": "a[1",
+  "expected": {
+   "error": "ожидалось ']'"
+  },
+  "actual": {
+   "error": [
+    "1:4: ожидалось ']' для '[' из 1:2, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a ** b",
+  "input": "a ** b",
+  "expected": {
+   "error": "ожидалось выражение, найдено '*'"
+  },
+  "actual": {
+   "error": [
+    "1:4: ожидалось выражение, найдено '*'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a % b",
+  "input": "a % b",
+  "expected": {
+   "error": "недопустимый символ '%'"
+  },
+  "actual": {
+   "error": [
+    "1:3: недопустимый символ '%'",
+    "1:5: лишний токен после выражения: идентификатор 'b'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "+a",
+  "input": "+a",
+  "expected": {
+   "error": "ожидалось выражение, найдено '+'"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось выражение, найдено '+'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a < b",
+  "input": "a < b",
+  "expected": {
+   "error": "ожидалось целочисленное выражение, найдено: сравнение"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось целочисленное выражение, найдено: сравнение"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "true",
+  "input": "true",
+  "expected": {
+   "error": "ожидалось целочисленное выражение"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось целочисленное выражение, найдено: логическая константа"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a + (b > c)",
+  "input": "a + (b > c)",
+  "expected": {
+   "error": "ожидалось целочисленное выражение"
+  },
+  "actual": {
+   "error": [
+    "1:6: ожидалось целочисленное выражение, найдено: сравнение"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "f(a < b)",
+  "input": "f(a < b)",
+  "expected": {
+   "error": "ожидалось целочисленное выражение"
+  },
+  "actual": {
+   "error": [
+    "1:3: ожидалось целочисленное выражение, найдено: сравнение"
+   ]
+  },
+  "status": "PASS",
+  "mode": "expr"
+ },
+ {
+  "group": "expr",
+  "name": "a < b < c",
+  "input": "a < b < c",
+  "expected": {
+   "error": "сравнения нельзя записывать цепочкой"
+  },
+  "actual": {
+   "error": [
+    "1:7: сравнения нельзя записывать цепочкой: лишний '<' (используйте 'and')"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a == b == c",
+  "input": "a == b == c",
+  "expected": {
+   "error": "сравнения нельзя записывать цепочкой"
+  },
+  "actual": {
+   "error": [
+    "1:8: сравнения нельзя записывать цепочкой: лишний '==' (используйте 'and')"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a",
+  "input": "a",
+  "expected": {
+   "error": "ожидалось логическое выражение"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a + 1",
+  "input": "a + 1",
+  "expected": {
+   "error": "ожидалось логическое выражение"
+  },
+  "actual": {
+   "error": [
+    "1:1: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: арифметическое выражение"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "not a",
+  "input": "not a",
+  "expected": {
+   "error": "ожидалось логическое выражение"
+  },
+  "actual": {
+   "error": [
+    "1:5: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b and c",
+  "input": "a < b and c",
+  "expected": {
+   "error": "ожидалось логическое выражение"
+  },
+  "actual": {
+   "error": [
+    "1:11: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "p(x)",
+  "input": "p(x)",
+  "expected": {
+   "error": "ссылки на формулы допустимы только в предикатах"
+  },
+  "actual": {
+   "error": [
+    "1:1: 'p(...)' в условии: ссылки на формулы допустимы только в предикатах, а вызов функции не является условием"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | i > 0)",
+  "input": "forall(i: int | i > 0)",
+  "expected": {
+   "error": "квантор 'forall' допустим только в предикатах"
+  },
+  "actual": {
+   "error": [
+    "1:1: квантор 'forall' допустим только в предикатах (requires/ensures/invariant/assert/assume/формула), не в условии"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a => b",
+  "input": "a => b",
+  "expected": {
+   "error": "лишний токен после выражения: '=>'"
+  },
+  "actual": {
+   "error": [
+    "1:3: лишний токен после выражения: '=>'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a < b ->",
+  "input": "a < b ->",
+  "expected": {
+   "error": "ожидалось выражение, найдено конец файла"
+  },
+  "actual": {
+   "error": [
+    "1:9: ожидалось выражение, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "a and and b",
+  "input": "a and and b",
+  "expected": {
+   "error": "ожидалось выражение, найдено 'and'"
+  },
+  "actual": {
+   "error": [
+    "1:7: ожидалось выражение, найдено 'and'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "cond"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i int | i > 0)",
+  "input": "forall(i int | i > 0)",
+  "expected": {
+   "error": "ожидалось ':'"
+  },
+  "actual": {
+   "error": [
+    "1:10: ожидалось ':' (после имени переменной), найдено 'int'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int, i > 0)",
+  "input": "forall(i: int, i > 0)",
+  "expected": {
+   "error": "ожидалось '|'"
+  },
+  "actual": {
+   "error": [
+    "1:14: ожидалось '|' (разделитель квантора), найдено ','"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | i > 0",
+  "input": "forall(i: int | i > 0",
+  "expected": {
+   "error": "ожидалось ')' для '(' из 1:7"
+  },
+  "actual": {
+   "error": [
+    "1:22: ожидалось ')' для '(' из 1:7, найдено конец файла"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall i: int | i > 0",
+  "input": "forall i: int | i > 0",
+  "expected": {
+   "error": "ожидалось '(' после 'forall'"
+  },
+  "actual": {
+   "error": [
+    "1:8: ожидалось '(' после 'forall', найдено идентификатор 'i'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "exists(i: bool | true)",
+  "input": "exists(i: bool | true)",
+  "expected": {
+   "error": "ожидалось 'int'"
+  },
+  "actual": {
+   "error": [
+    "1:11: ожидалось 'int' (тип: int или int[]), найдено идентификатор 'bool'"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "expr",
+  "name": "forall(i: int | i)",
+  "input": "forall(i: int | i)",
+  "expected": {
+   "error": "ожидалось логическое выражение"
+  },
+  "actual": {
+   "error": [
+    "1:17: ожидалось логическое выражение (сравнение, true/false, not/and/or), найдено: переменная"
+   ]
+  },
+  "status": "PASS",
+  "mode": "pred"
+ },
+ {
+  "group": "positions",
+  "name": "'x'",
+  "input": "x",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "EOF",
+    1,
+    2
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "EOF",
+    1,
+    2
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'  x\\n y'",
+  "input": "  x\n y",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    3
+   ],
+   [
+    "IDENT",
+    2,
+    2
+   ],
+   [
+    "EOF",
+    2,
+    3
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    3
+   ],
+   [
+    "IDENT",
+    2,
+    2
+   ],
+   [
+    "EOF",
+    2,
+    3
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'a\\r\\nb'",
+  "input": "a\r\nb",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'a\\rb'",
+  "input": "a\rb",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'a\\n\\n\\nb'",
+  "input": "a\n\n\nb",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    4,
+    1
+   ],
+   [
+    "EOF",
+    4,
+    2
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    4,
+    1
+   ],
+   [
+    "EOF",
+    4,
+    2
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'\\tif(x)'",
+  "input": "\tif(x)",
+  "expected": [
+   [
+    "KW_IF",
+    1,
+    2
+   ],
+   [
+    "LPAREN",
+    1,
+    4
+   ],
+   [
+    "IDENT",
+    1,
+    5
+   ],
+   [
+    "RPAREN",
+    1,
+    6
+   ],
+   [
+    "EOF",
+    1,
+    7
+   ]
+  ],
+  "actual": [
+   [
+    "KW_IF",
+    1,
+    2
+   ],
+   [
+    "LPAREN",
+    1,
+    4
+   ],
+   [
+    "IDENT",
+    1,
+    5
+   ],
+   [
+    "RPAREN",
+    1,
+    6
+   ],
+   [
+    "EOF",
+    1,
+    7
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'x // c\\ny'",
+  "input": "x // c\ny",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    1
+   ],
+   [
+    "EOF",
+    2,
+    2
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "'x // c\\r\\n  y'",
+  "input": "x // c\r\n  y",
+  "expected": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    3
+   ],
+   [
+    "EOF",
+    2,
+    4
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    1,
+    1
+   ],
+   [
+    "IDENT",
+    2,
+    3
+   ],
+   [
+    "EOF",
+    2,
+    4
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "positions",
+  "name": "''",
+  "input": "",
+  "expected": [
+   [
+    "EOF",
+    1,
+    1
+   ]
+  ],
+  "actual": [
+   [
+    "EOF",
+    1,
+    1
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "grammar",
+  "name": "конфликты LL(1) только ожидаемые",
+  "input": "",
+  "expected": [
+   [
+    "else_opt",
+    "KW_ELSE"
+   ]
+  ],
+  "actual": [
+   [
+    "else_opt",
+    "KW_ELSE"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "group": "grammar",
+  "name": "терминалы = токены лексера",
+  "input": "",
+  "expected": [],
+  "actual": [],
+  "status": "PASS"
+ },
+ {
+  "group": "grammar",
+  "name": "все токены лексера используются",
+  "input": "",
+  "expected": [],
+  "actual": [],
+  "status": "PASS"
+ },
+ {
+  "group": "grammar",
+  "name": "нет недостижимых нетерминалов",
+  "input": "",
+  "expected": [],
+  "actual": [],
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "01_gcd.fn",
+  "input": "01_gcd.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "02_divide.fn",
+  "input": "02_divide.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "03_arrays.fn",
+  "input": "03_arrays.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "04_formulas.fn",
+  "input": "04_formulas.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "05_dangling_else.fn",
+  "input": "05_dangling_else.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "06_precedence.fn",
+  "input": "06_precedence.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "07_assert_assume.fn",
+  "input": "07_assert_assume.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "08_function_keyword.fn",
+  "input": "08_function_keyword.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "09_minimal.fn",
+  "input": "09_minimal.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "10_whitespace_crlf.fn",
+  "input": "10_whitespace_crlf.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "11_recursion.fn",
+  "input": "11_recursion.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "json",
+  "name": "12_nested.fn",
+  "input": "12_nested.fn",
+  "expected": true,
+  "actual": true,
+  "status": "PASS"
+ },
+ {
+  "group": "fuzz",
+  "name": "парсер не падает",
+  "input": "600 мутаций, seed=2026",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "group": "fuzz",
+  "name": "парсер не зацикливается",
+  "input": "600 мутаций, seed=2026",
+  "expected": null,
+  "actual": null,
+  "status": "PASS",
+  "detail": "с ошибками: 588 из 600"
+ }
+]
