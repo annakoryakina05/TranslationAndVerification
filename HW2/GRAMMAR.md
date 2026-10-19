@@ -1,4 +1,4 @@
-# Грамматика Funny для LL(1)-парсера (HW2)
+# Грамматика Funny для LL(1)-парсера (HW2) 
 
 Финальная грамматика в машинно-проверяемом виде — [`grammar/funny.ll1`](grammar/funny.ll1).
 Её проверяет команда `python3 -m funny_parser grammar`: считает FIRST/FOLLOW, строит
