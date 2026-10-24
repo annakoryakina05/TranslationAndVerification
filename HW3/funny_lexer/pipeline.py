@@ -1,4 +1,3 @@
-"""Полный конвейер: спецификация → НКА → ДКА → минимальный ДКА."""
 from dataclasses import dataclass
 
 from .dfa import compute_char_classes, equivalent, minimize, moore_count, subset_construction

@@ -1,21 +1,3 @@
-"""Типы языка Funny и унификация.
-
-Типы значений:
-    int        32-битное целое
-    int[]      массив int            (Array(INT); тип элемента — тоже тип, unify структурный)
-    bool       логическое значение   (условия, предикаты; переменных типа bool в Funny нет)
-Типы «вызываемых» имён (сигнатуры):
-    function   (типы параметров) -> (типы результатов)
-    formula    (типы параметров) -> bool        — только в предикатах
-    builtin    length: (int[]) -> (int)
-Служебные:
-    TVar       переменная типа — тип ещё неизвестен (локальная без аннотации, бонус)
-    ERR        «тип ошибки»: подставляется после уже сообщённой ошибки и совместим
-               со всем — так одна ошибка не порождает лавину следующих.
-
-Унификация unify(a, b): делает два типа равными, связывая переменные типов.
-Хранение — union-find: TVar.ref указывает на тип, которым переменная стала.
-"""
 import itertools
 from dataclasses import dataclass, field
 from typing import List, Optional, Tuple
@@ -55,7 +37,6 @@ _ids = itertools.count(1)
 
 
 class TVar(Type):
-    """Переменная типа. origin — (строка, столбец), где ей впервые был назначен тип."""
 
     def __init__(self, name=None):
         self.id = next(_ids)
@@ -68,14 +49,12 @@ class TVar(Type):
 
 
 def resolve(t):
-    """Пройти по цепочке связанных переменных типа до конечного типа."""
     while isinstance(t, TVar) and t.ref is not None:
         t = t.ref
     return t
 
 
 def deep(t):
-    """Полностью раскрыть тип (в т.ч. внутри массива)."""
     t = resolve(t)
     if isinstance(t, Array):
         return Array(deep(t.elem))
@@ -99,8 +78,6 @@ def occurs(v, t):
 
 
 def unify(a, b, where=None):
-    """True, если типы удалось сделать равными; where=(строка, столбец) запоминается
-    как место, где переменная типа впервые получила тип (для сообщений)."""
     a, b = resolve(a), resolve(b)
     if a is b:
         return True
@@ -130,7 +107,6 @@ def _bind(v, t, where):
 
 
 def binding_origin(t):
-    """Где переменная типа (или цепочка связанных) получила конкретный тип."""
     last = None
     while isinstance(t, TVar):
         if t.origin is not None:
@@ -142,7 +118,6 @@ def binding_origin(t):
 
 
 def from_annotation(s):
-    """'int' | 'int[]' | None -> Type."""
     if s is None:
         return TVar()
     return Array(INT) if s == "int[]" else INT
@@ -150,11 +125,10 @@ def from_annotation(s):
 
 @dataclass
 class Signature:
-    """Сигнатура функции, формулы или встроенной функции."""
     name: str
-    kind: str                         # function | formula | builtin
+    kind: str                         
     params: List[Type]
-    returns: List[Type] = field(default_factory=list)   # у формулы пусто (результат bool)
+    returns: List[Type] = field(default_factory=list)  
     line: int = 0
     col: int = 0
 

@@ -1,4 +1,3 @@
-"""Чтение файла спецификации токенов (spec/funny.tokens)."""
 import re
 from dataclasses import dataclass, field
 from pathlib import Path

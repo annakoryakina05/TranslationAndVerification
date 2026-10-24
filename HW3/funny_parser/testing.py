@@ -1,13 +1,3 @@
-"""Тесты парсера.
-
-  positive   tests/parser/positive/*.fn  -> без ошибок, AST == эталону *.ast (snapshot)
-  negative   tests/parser/negative/*.fn  -> диагностики == эталону *.err
-  expr       tests/parser/expr_cases.json — приоритеты/ассоциативность, виды выражений
-  positions  позиции токенов (строка:столбец, CRLF, таб)
-  grammar    LL(1)-проверка grammar/funny.ll1: конфликты только ожидаемые
-  json       AST сериализуется в JSON и читается обратно
-  fuzz       случайные порчи позитивных программ: парсер не падает и не зацикливается
-"""
 import json
 import random
 from pathlib import Path

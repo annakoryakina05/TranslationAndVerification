@@ -1,4 +1,3 @@
-"""CLI:  python3 -m funny_parser {parse|tokens|grammar|test|all} ..."""
 import argparse
 import json
 import sys

@@ -1,4 +1,3 @@
-"""CLI:  python3 -m funny_sema {check|test} ..."""
 import argparse
 import json
 import sys

@@ -1,4 +1,3 @@
-"""Вывод аннотированного AST: текстовое дерево с типами и JSON."""
 import json
 
 from funny_parser import ast as A
@@ -8,7 +7,6 @@ from .symbols import KIND_NAMES
 
 
 def tsexpr(e):
-    """S-выражение с типами: переменные и составные узлы помечены ':тип'."""
     if e is None:
         return "—"
     t = f":{e.ty}" if e.ty else ""
@@ -44,7 +42,7 @@ def _sig(defs):
 def to_text(result):
     out = ["Module"]
     for d in result.module.decls:
-        if d.name not in result.tables:          # объявление пропущено (дубликат имени)
+        if d.name not in result.tables:          
             continue
         if isinstance(d, A.Formula):
             out.append(f"  Formula {d.name}({_sig(d.params)}) -> bool  @{d.line}:{d.col}")

@@ -1,4 +1,3 @@
-"""CLI:  python -m funny_lexer {build|test|lex|report|all} ..."""
 import argparse
 import json
 import sys

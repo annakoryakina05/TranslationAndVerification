@@ -1,4 +1,3 @@
-"""Интеграция с лексером из HW1: текст -> поток токенов с позициями + лексические ошибки."""
 from dataclasses import dataclass
 from pathlib import Path
 

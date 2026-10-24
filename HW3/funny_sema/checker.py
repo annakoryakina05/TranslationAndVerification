@@ -1,22 +1,3 @@
-"""Семантический анализ Funny: имена, области видимости, типы, вывод типов локальных.
-
-Вход — AST из HW2 (parse_program(text, check_sorts=False)).
-Выход — тот же AST с аннотациями (node.ty — тип выражения, node.ref — к чему
-относится имя), таблицы символов функций и список диагностик.
-
-Проход по модулю:
-  1. собрать сигнатуры всех функций и формул (вызывать можно объявленные ниже);
-  2. проверить каждую формулу и функцию:
-       - объявить параметры / результаты / локальные в области функции;
-       - проверить requires, ensures, тело — у каждой части своя видимость;
-       - типы выражений выводятся снизу вверх и сверяются с ожидаемыми через unify;
-       - локальным без аннотации даётся переменная типа (TVar), её связывает
-         первое использование с однозначным типом (обычно первое присваивание);
-  3. в конце функции: невыведенные типы -> ошибка; аннотации записываются в узлы.
-
-Ошибки не останавливают анализ: после ошибки подставляется тип ERR, совместимый
-со всем, поэтому одна ошибка не порождает каскад следующих.
-"""
 import difflib
 
 from funny_parser import ast as A
@@ -30,7 +11,6 @@ INT_MIN, INT_MAX = -(2 ** 31), 2 ** 31 - 1
 
 
 def plural(n, one, few, many):
-    """plural(2, 'аргумент', 'аргумента', 'аргументов') -> '2 аргумента'."""
     if n % 10 == 1 and n % 100 != 11:
         w = one
     elif 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
@@ -52,8 +32,8 @@ CLAUSE_NAMES = {"requires": "в requires (там видны только пар�
 class SemaResult:
     def __init__(self, module, tables, signatures, diags):
         self.module = module
-        self.tables = tables            # имя функции/формулы -> [Symbol]
-        self.signatures = signatures    # имя -> Signature
+        self.tables = tables            
+        self.signatures = signatures    
         self.diags = diags
 
 
@@ -63,11 +43,10 @@ class Checker:
         self.diags = []
         self.globals = {}
         self.tables = {}
-        self.scope = None          # текущая область (функция или квантор)
-        self.clause = "body"       # где сейчас стоит выражение
-        self.pending = []          # (узел, тип) — типы окончательно известны в конце функции
+        self.scope = None         
+        self.clause = "body"      
+        self.pending = []          
 
-    # ------------------------------------------------------------------ ошибки
     def error(self, node, message, phase="type"):
         line, col = getattr(node, "line", 0), getattr(node, "col", 0)
         for d in self.diags:
@@ -80,7 +59,6 @@ class Checker:
         close = difflib.get_close_matches(name, sorted(candidates), n=1, cutoff=0.6)
         return f"; возможно, имелось в виду '{close[0]}'" if close else ""
 
-    # ------------------------------------------------------------------ модуль
     def check_module(self, m):
         self.globals = {"length": Signature("length", "builtin", [Array(INT)], [INT])}
         decls = []
@@ -107,7 +85,6 @@ class Checker:
                 self.check_function(d)
         return SemaResult(m, self.tables, self.globals, self.diags)
 
-    # ------------------------------------------------------- функции и формулы
     def begin(self, owner):
         self.scope = Scope("function")
         self.pending = []
@@ -148,7 +125,6 @@ class Checker:
         self.finish(f)
 
     def finish(self, owner):
-        """Конец функции: проверить выведенные типы и записать аннотации в AST."""
         for sym in self.scope.symbols.values():
             if not sym.inferred:
                 continue
@@ -171,9 +147,7 @@ class Checker:
             node.ty = show(t)
         self.tables[owner.name] = list(self.scope.symbols.values())
 
-    # ------------------------------------------------------------- переменные
     def lookup_var(self, name, node):
-        """Найти переменную с учётом квантора и видимости части функции. None — ошибка уже выдана."""
         sym = self.scope.lookup(name)
         if sym is not None:
             if sym.kind == "bound" or sym.kind in VISIBLE[self.clause]:
@@ -202,7 +176,7 @@ class Checker:
     def writable(self, name, node):
         sym = self.scope.lookup(name)
         if sym is None:
-            return self.lookup_var(name, node)       # выдаст «неизвестная переменная»
+            return self.lookup_var(name, node)      
         if sym.kind == "param":
             self.error(node, f"нельзя присваивать параметру '{name}' ({sym.line}:{sym.col}): "
                              "параметры функции доступны только для чтения", "name")
@@ -212,7 +186,6 @@ class Checker:
             return None
         return sym
 
-    # --------------------------------------------------------- ожидание типа
     def expect(self, e, pred, expected, what):
         node, t = self.infer(e, pred)
         self.require(node, t, expected, what)
@@ -231,9 +204,7 @@ class Checker:
         self.error(node, msg)
         return False
 
-    # ------------------------------------------------------------- выражения
     def infer(self, e, pred):
-        """(новый узел, тип). pred=True — разрешены кванторы и ссылки на формулы."""
         node, t = getattr(self, "e_" + type(e).__name__)(e, pred)
         self.pending.append((node, t))
         return node, t
@@ -266,7 +237,7 @@ class Checker:
         return e, INT
 
     def e_Neg(self, e, pred):
-        if isinstance(e.operand, A.IntLit):            # -2147483648 допустимо
+        if isinstance(e.operand, A.IntLit):           
             node, _ = self.e_IntLit(e.operand, pred, negated=True)
             self.pending.append((node, INT))
         else:
@@ -362,7 +333,6 @@ class Checker:
             else:
                 e.args[i], _ = self.infer(a, False)
 
-    # -------------------------------------------------------------- операторы
     def check_stmt(self, s):
         getattr(self, "s_" + type(s).__name__)(s)
 
@@ -393,7 +363,7 @@ class Checker:
             return self.tuple_assign(s)
         name, v = s.targets[0], s.value
         sym = self.writable(name, s)
-        if isinstance(v, A.ArrayStore):                         # a[i] = e  (сахар: a = store(a, i, e))
+        if isinstance(v, A.ArrayStore):                        
             if sym is not None:
                 v.ref = sym.kind
                 if not unify(sym.type, Array(INT), (s.line, s.col)):
@@ -423,12 +393,12 @@ class Checker:
             seen[name] = True
             syms.append(self.writable(name, s))
         call = s.value
-        if not isinstance(call, A.Call):            # парсер уже сообщил об ошибке
+        if not isinstance(call, A.Call):           
             self.infer(call, False)
             return
         sig = self.globals.get(call.name)
         if sig is None or sig.kind == "formula":
-            s.value, _ = self.infer(call, False)    # сообщит «неизвестная функция» / «это формула»
+            s.value, _ = self.infer(call, False)   
             return
         call.ref = sig.kind
         self.check_args(call, sig)

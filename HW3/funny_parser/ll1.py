@@ -1,8 +1,3 @@
-"""Проверка LL(1)-грамматики: FIRST, FOLLOW, таблица разбора, конфликты.
-
-Читает grammar/funny.ll1 и сверяет терминалы с токенами лексера
-(spec/funny.tokens), так что грамматика и лексер не могут разойтись молча.
-"""
 import csv
 from dataclasses import dataclass
 from pathlib import Path

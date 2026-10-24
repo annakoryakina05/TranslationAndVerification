@@ -1,17 +1,3 @@
-"""Проверка видов выражений после разбора.
-
-Парсер использует ЕДИНУЮ грамматику для expr / condition / predicate
-(иначе грамматика не LL(1): по '(' нельзя понять, начинается ли
-'(a + b) > c' или '(a > b) and c'). Ограничения спецификации проверяются здесь,
-и в итоге принимается ровно язык из docs/funny.md:
-
-  * expr (целое):     числа, переменные, a[i], вызовы, - + * /
-  * condition (if/while):  true/false, сравнения, not/and/or/->
-  * predicate (requires/ensures/invariant/assert/assume/формула):
-                      condition + кванторы + ссылки на формулы.
-
-Вызов f(...) в логической позиции предиката превращается в FormulaRef.
-"""
 from . import ast as A
 from .tokens import Diagnostic
 

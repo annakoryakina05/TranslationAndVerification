@@ -1,16 +1,3 @@
-"""Тесты семантического анализа.
-
-  positive     tests/sema/positive/*.fn -> без ошибок, аннотированный AST == эталону *.out
-  negative     tests/sema/negative/*.fn -> диагностики == эталону *.err
-  diagnostics  у каждой ошибки есть позиция (строка, столбец >= 1) и понятный текст;
-               анализ не останавливается после первой ошибки
-  unify        модульные тесты унификации и переменных типов
-  json         аннотированный AST сериализуется: тип есть у каждого выражения
-  fuzz         случайные замены имён/чисел/типов в позитивных программах:
-               анализатор не падает, у всех ошибок есть позиции
-
-Флаги анализа можно задать первой строкой файла:  // sema: allow-array-locals
-"""
 import json
 import random
 import re
@@ -48,7 +35,6 @@ def diag_lines(diags):
     return [f"{d.line}:{d.col}: [{d.phase}] {d.message}" for d in diags]
 
 
-# --------------------------------------------------------------- snapshots
 def run_positive(update=False):
     out = []
     for src in sorted((TESTS / "positive").glob("*.fn")):
@@ -75,7 +61,6 @@ def run_negative(update=False):
     return out
 
 
-# ------------------------------------------------------- качество диагностик
 def run_diagnostics():
     out = []
     total = 0
@@ -92,7 +77,6 @@ def run_diagnostics():
     return out
 
 
-# ------------------------------------------------------------------ unify
 def run_unify():
     cases = []
 
@@ -137,7 +121,6 @@ def run_unify():
     return cases
 
 
-# ------------------------------------------------------------------- json
 def _expr_nodes(node, acc):
     if isinstance(node, A.Node):
         if not isinstance(node, (A.Module, A.Function, A.Formula, A.VarDef, A.Block, A.Assign,
@@ -163,7 +146,6 @@ def run_json():
     return out
 
 
-# ------------------------------------------------------------------- fuzz
 IDENT_RE = re.compile(r"\b[A-Za-z][A-Za-z0-9]*\b")
 KEYWORDS = {"function", "returns", "while", "if", "else", "assert", "assume", "invariant", "length",
             "requires", "ensures", "uses", "int", "true", "false", "not", "and", "or", "forall", "exists"}
@@ -173,23 +155,23 @@ def mutate(rng, text):
     for _ in range(rng.randint(1, 3)):
         idents = sorted({m.group() for m in IDENT_RE.finditer(text)} - KEYWORDS)
         op = rng.random()
-        if op < 0.45 and idents:                         # подменить имя (неизвестные/чужие имена)
+        if op < 0.45 and idents:                        
             a = rng.choice(idents)
             b = rng.choice(idents + ["zz", "length"])
             spots = [m for m in re.finditer(rf"\b{a}\b", text)]
             m = rng.choice(spots)
             text = text[:m.start()] + b + text[m.end():]
-        elif op < 0.65:                                  # int <-> int[]
+        elif op < 0.65:                                  
             spots = [m for m in re.finditer(r"\bint\b(\[\])?", text)]
             if spots:
                 m = rng.choice(spots)
                 text = text[:m.start()] + ("int" if m.group(1) else "int[]") + text[m.end():]
-        elif op < 0.8:                                   # число -> true / огромное
+        elif op < 0.8:                                  
             spots = [m for m in re.finditer(r"\b\d+\b", text)]
             if spots:
                 m = rng.choice(spots)
                 text = text[:m.start()] + rng.choice(["true", "99999999999", "x"]) + text[m.end():]
-        else:                                            # убрать аннотацию локальной
+        else:                                            
             text = re.sub(r"(uses[^{]*?\b[A-Za-z][A-Za-z0-9]*)\s*:\s*int(\[\])?", r"\1", text, count=1)
     return text
 
@@ -206,7 +188,7 @@ def run_fuzz(samples=400, seed=2026):
             sem_errors += any(d.phase in ("name", "type") for d in r.diags)
             if any(d.line < 1 or d.col < 1 for d in r.diags) and nopos is None:
                 nopos = text
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:  
             crash = crash or f"{type(e).__name__}: {e} на входе {text!r}"
     return [
         _res("fuzz", "анализатор не падает", f"{samples} мутаций, seed={seed}", None, crash, ok=crash is None),

@@ -1,4 +1,3 @@
-"""Генерация REPORT.md из реального прогона (числа не вписываются руками)."""
 from collections import deque
 
 from .dfa import hopcroft_partition

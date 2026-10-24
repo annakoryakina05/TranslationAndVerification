@@ -1,9 +1,3 @@
-"""Узлы AST языка Funny и их вывод (текстовое дерево и JSON).
-
-У каждого узла есть line/col — позиция его первого токена (с 1).
-Формат JSON:  {"node": "<Класс>", "line": L, "col": C, <поля>...}
-Подробное описание — AST.md.
-"""
 import json
 from dataclasses import dataclass, field, fields
 from typing import List, Optional
