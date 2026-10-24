@@ -1,0 +1,33 @@
+Module
+  Function copyInc  @2:1
+    params:   a: int[]
+    requires: —
+    returns:  b: int[]
+    ensures:  —
+    uses:     i: int
+    body:
+      Block  @5:1
+        Assign b = a  @6:3
+        Assign i = 0  @7:3
+        While (< i (call length a))  @8:3
+          invariant: (and (>= i 0) (<= i (call length a)))
+          body:
+            Block  @8:61
+              Assign b = (store b i (+ (index a i) 1))  @9:5
+              Assign i = (+ i 1)  @10:5
+  Function sum  @14:1
+    params:   a: int[]
+    requires: —
+    returns:  s: int
+    ensures:  —
+    uses:     i: int
+    body:
+      Block  @14:42
+        Assign s = 0  @15:3
+        Assign i = 0  @16:3
+        While (< i (call length a))  @17:3
+          invariant: —
+          body:
+            Block  @17:25
+              Assign s = (+ s (index a (- (* i 2) 1)))  @18:5
+              Assign i = (+ i 1)  @19:5

@@ -1,0 +1,14 @@
+// many different errors in one program: analysis does not stop at the first one
+p(x: int) => x > 0
+f(x: int, a: int[]) requires r > 0 returns r: int, q: int uses t, u {
+  x = 1;
+  r = undefinedVar;
+  r = a;
+  r = g(1);
+  r = f(1, a);
+  q = p(x);
+  if (r) q = 1;
+  t = 1;
+  t = a;
+  r = 3000000000;
+}

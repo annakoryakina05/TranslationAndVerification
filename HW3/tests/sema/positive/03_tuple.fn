@@ -1,0 +1,14 @@
+// Several return values and tuple assignment
+divmod(a: int, b: int)
+  requires b > 0
+  returns q: int, r: int
+  ensures a == q * b + r
+{
+  q = a / b;
+  r = a - q * b;
+}
+
+useDivmod(x: int) returns s: int uses q: int, r: int {
+  q, r = divmod(x, 7);
+  s = q + r;
+}

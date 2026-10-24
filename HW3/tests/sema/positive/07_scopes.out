@@ -1,0 +1,18 @@
+Module
+  Function f(x: int) -> (r: int)  @3:1
+    symbols:
+      x        параметр               int    @3:3
+      r        возвращаемое значение  int    @5:11
+      t        локальная переменная   int    @7:8
+    requires: (and (>= x:int 0):bool (forall (r int) (-> (> r:int 0):bool (> (+ r:int x:int):int 0):bool):bool):bool):bool
+    ensures:  (and (>= r:int x:int):bool (forall (k int) (-> (< k:int x:int):bool (< k:int r:int):bool):bool):bool):bool
+    body:
+      Block  @8:1
+        Assign t = (+ x:int 1):int  @9:3
+        Assign r = t:int  @10:3
+        While (> t:int 0):bool  @11:3
+          invariant: (and (and (>= t:int 0):bool (>= r:int x:int):bool):bool (forall (k int) (-> (>= k:int 0):bool (>= (+ k:int t:int):int t:int):bool):bool):bool):bool
+          body:
+            Block  @11:87
+              Assign t = (- t:int 1):int  @12:5
+        Assert (and (exists (k int) (== k:int r:int):bool):bool (exists (k int) (== k:int t:int):bool):bool):bool  @14:3

@@ -1,0 +1,16 @@
+// Several semantic errors: all of them are reported in one run
+positive(x: int) => x > 0
+
+two(x: int) returns a: int, b: int { a = x; b = x; }
+
+f(x: int, arr: int[]) requires r > 0 returns r: int uses t, unused {
+  x = 1;
+  r = arr;
+  r = sum(arr);
+  r = two(x);
+  if (x) r = 1;
+  while (positive(x)) r = 2;
+  t = 1;
+  t = arr;
+  r = length(x, arr);
+}

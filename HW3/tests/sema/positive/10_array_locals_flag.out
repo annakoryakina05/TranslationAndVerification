@@ -1,0 +1,22 @@
+Module
+  Function rev(a: int[]) -> (b: int[])  @3:1
+    symbols:
+      a        параметр               int[]  @3:5
+      b        возвращаемое значение  int[]  @3:23
+      tmp      локальная переменная   int[]  @3:37  (тип выведен из 4:3)
+      i        локальная переменная   int    @3:42
+      n        локальная переменная   int    @3:50  (тип выведен из 5:3)
+    requires: —
+    ensures:  —
+    body:
+      Block  @3:52
+        Assign tmp = a:int[]  @4:3
+        Assign n = (call length a:int[]):int  @5:3
+        Assign i = 0  @6:3
+        While (< i:int n:int):bool  @7:3
+          invariant: —
+          body:
+            Block  @7:17
+              Assign tmp = (store tmp i:int (index a (- (- n:int 1):int i:int):int):int):int[]  @8:5
+              Assign i = (+ i:int 1):int  @9:5
+        Assign b = tmp:int[]  @11:3

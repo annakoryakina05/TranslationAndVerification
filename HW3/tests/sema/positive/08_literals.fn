@@ -1,0 +1,7 @@
+// int32 bounds, unary minus, true/false, all operators
+limits() returns lo: int, hi: int {
+  lo = -2147483648;
+  hi = 2147483647;
+  if (true and not false or lo < hi -> hi >= lo) lo = - -lo;
+  if (lo == hi or lo != hi and lo <= hi and hi > lo) hi = (lo + hi) * 2 / 2 - 1;
+}

@@ -1,0 +1,4 @@
+// duplicate names among params, returns and locals
+f(x: int, x: int) returns x: int, r: int uses r: int, t: int, t {
+  r = 1;
+}

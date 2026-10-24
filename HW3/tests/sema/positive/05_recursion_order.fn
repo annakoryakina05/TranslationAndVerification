@@ -1,0 +1,12 @@
+// Recursion and calls to functions declared later (order does not matter)
+isEven(n: int) requires n >= 0 returns r: int {
+  if (n == 0) r = 1; else r = isOdd(n - 1);
+}
+
+isOdd(n: int) requires n >= 0 returns r: int {
+  if (n == 0) r = 0; else r = isEven(n - 1);
+}
+
+fact(n: int) returns r: int {
+  if (n <= 1) r = 1; else r = n * fact(n - 1);
+}

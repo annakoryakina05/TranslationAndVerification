@@ -1,0 +1,58 @@
+Module
+  Function sum(a: int[]) -> (s: int)  @2:1
+    symbols:
+      a        параметр               int[]  @2:5
+      s        возвращаемое значение  int    @2:23
+      i        локальная переменная   int    @2:35  (тип выведен из 3:3)
+      acc      локальная переменная   int    @2:38  (тип выведен из 4:3)
+    requires: —
+    ensures:  —
+    body:
+      Block  @2:42
+        Assign i = 0  @3:3
+        Assign acc = 0  @4:3
+        While (< i:int (call length a:int[]):int):bool  @5:3
+          invariant: —
+          body:
+            Block  @5:25
+              Assign acc = (+ acc:int (index a i:int):int):int  @6:5
+              Assign i = (+ i:int 1):int  @7:5
+        Assign s = acc:int  @9:3
+  Function chain(x: int) -> (r: int)  @13:1
+    symbols:
+      x        параметр               int    @13:7
+      r        возвращаемое значение  int    @13:23
+      t        локальная переменная   int    @13:35  (тип выведен из 14:7)
+      u        локальная переменная   int    @13:38  (тип выведен из 16:3)
+      v        локальная переменная   int    @13:41  (тип выведен из 16:3)
+    requires: —
+    ensures:  —
+    body:
+      Block  @13:43
+        Assign r = (+ t:int 1):int  @14:3
+        Assign u = v:int  @15:3
+        Assign v = x:int  @16:3
+        Assign t = u:int  @17:3
+  Function pair(a: int, b: int) -> (p: int, q: int)  @21:1
+    symbols:
+      a        параметр               int    @21:6
+      b        параметр               int    @21:14
+      p        возвращаемое значение  int    @21:30
+      q        возвращаемое значение  int    @21:38
+    requires: —
+    ensures:  —
+    body:
+      Block  @21:45
+        Assign p = a:int  @21:47
+        Assign q = b:int  @21:54
+  Function usePair() -> (r: int)  @22:1
+    symbols:
+      r        возвращаемое значение  int    @22:19
+      m        локальная переменная   int    @22:31  (тип выведен из 23:3)
+      n        локальная переменная   int    @22:34  (тип выведен из 23:3)
+    requires: —
+    ensures:  —
+    body:
+      Block  @22:36
+        Assign m, n = (call pair 1 2):(int, int)  @23:3
+        Assign r = (* m:int n:int):int  @24:3

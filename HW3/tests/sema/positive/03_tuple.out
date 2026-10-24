@@ -1,0 +1,25 @@
+Module
+  Function divmod(a: int, b: int) -> (q: int, r: int)  @2:1
+    symbols:
+      a        параметр               int    @2:8
+      b        параметр               int    @2:16
+      q        возвращаемое значение  int    @4:11
+      r        возвращаемое значение  int    @4:19
+    requires: (> b:int 0):bool
+    ensures:  (== a:int (+ (* q:int b:int):int r:int):int):bool
+    body:
+      Block  @6:1
+        Assign q = (/ a:int b:int):int  @7:3
+        Assign r = (- a:int (* q:int b:int):int):int  @8:3
+  Function useDivmod(x: int) -> (s: int)  @11:1
+    symbols:
+      x        параметр               int    @11:11
+      s        возвращаемое значение  int    @11:27
+      q        локальная переменная   int    @11:39
+      r        локальная переменная   int    @11:47
+    requires: —
+    ensures:  —
+    body:
+      Block  @11:54
+        Assign q, r = (call divmod x:int 7):(int, int)  @12:3
+        Assign s = (+ q:int r:int):int  @13:3

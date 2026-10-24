@@ -1,0 +1,12 @@
+// use outside of scope: requires sees only params, ensures does not see locals,
+// a quantifier variable does not exist outside its quantifier
+f(x: int)
+  requires r > 0 and t > 0
+  returns r: int
+  ensures r > x and t > 0
+  uses t: int
+{
+  t = 1;
+  r = x;
+  assert forall(i: int | i > 0) and i > 0;
+}

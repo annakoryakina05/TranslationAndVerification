@@ -1,0 +1,2 @@
+// Minimal function: no parameters, body is a single statement
+zero() returns r: int r = 0;

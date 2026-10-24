@@ -1,0 +1,4 @@
+noReturns(x: int) ensures x > 0 { }
+badType(x: string) returns r: int { r = 1; }
+noColon(x int) returns r: int { r = 1; }
+ok() returns r: int { r = 1; }

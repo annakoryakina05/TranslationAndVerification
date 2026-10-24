@@ -1,0 +1,9 @@
+// no implicit conversions between int and bool
+f(x: int) returns r: int {
+  if (x) r = 1;
+  while (1) r = 2;
+  r = x > 0;
+  r = not x;
+  r = x and true;
+  assert x;
+}

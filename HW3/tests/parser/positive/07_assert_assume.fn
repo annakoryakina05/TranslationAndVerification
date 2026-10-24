@@ -1,0 +1,8 @@
+// assert / assume with predicates
+check(x: int) returns y: int {
+  assume x >= 0;
+  y = x * x;
+  assert y >= 0;
+  assert y >= x or x < 1;
+  assert forall(k: int | k > y -> k > 0);
+}

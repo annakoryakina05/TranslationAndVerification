@@ -1,0 +1,6 @@
+// duplicate function / formula names: no overloading in Funny
+f(x: int) returns r: int r = x;
+f(x: int, y: int) returns r: int r = x + y;
+p(x: int) => x > 0
+p(x: int, y: int) => x > y
+f(x: int) => x > 0

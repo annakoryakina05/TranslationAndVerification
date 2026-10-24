@@ -1,0 +1,7 @@
+// integer constants must fit into 32 bits
+f() returns r: int {
+  r = 2147483648;
+  r = -2147483649;
+  r = 99999999999999;
+  r = -2147483648;
+}

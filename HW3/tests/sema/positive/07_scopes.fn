@@ -1,0 +1,15 @@
+// Scopes: requires sees params, ensures sees params+returns, body sees everything.
+// Quantifier variables are local to their quantifier, sibling quantifiers may reuse a name.
+f(x: int)
+  requires x >= 0 and forall(r: int | r > 0 -> r + x > 0)
+  returns r: int
+  ensures r >= x and forall(k: int | k < x -> k < r)
+  uses t: int
+{
+  t = x + 1;
+  r = t;
+  while (t > 0) invariant t >= 0 and r >= x and forall(k: int | k >= 0 -> k + t >= t) {
+    t = t - 1;
+  }
+  assert exists(k: int | k == r) and exists(k: int | k == t);
+}

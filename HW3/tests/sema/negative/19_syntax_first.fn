@@ -1,0 +1,5 @@
+// syntax errors: semantic analysis is not run on a broken tree
+f(x: int) returns r: int {
+  r = x +;
+  r = unknown;
+}

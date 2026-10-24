@@ -1,0 +1,4 @@
+f(a: int) returns r: int {
+  if (a < 1 < 2) r = 1;
+  if (0 <= a <= 5) r = 2;
+}

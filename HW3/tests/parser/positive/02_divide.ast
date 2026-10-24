@@ -1,0 +1,27 @@
+Module
+  Function divide  @2:1
+    params:   a: int, b: int
+    requires: (and (> b 0) (>= a 0))
+    returns:  q: int, r: int
+    ensures:  (and (and (== a (+ (* q b) r)) (>= r 0)) (< r b))
+    uses:     —
+    body:
+      Block  @6:1
+        Assign q = 0  @7:3
+        Assign r = a  @8:3
+        While (>= r b)  @9:3
+          invariant: (and (== a (+ (* q b) r)) (>= r 0))
+          body:
+            Block  @9:54
+              Assign q = (+ q 1)  @10:5
+              Assign r = (- r b)  @11:5
+  Function useDivide  @15:1
+    params:   x: int
+    requires: —
+    returns:  s: int
+    ensures:  —
+    uses:     q: int, r: int
+    body:
+      Block  @15:54
+        Assign q, r = (call divide x 7)  @16:3
+        Assign s = (+ q r)  @17:3

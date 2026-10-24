@@ -1,0 +1,17 @@
+Module
+  Function limits() -> (lo: int, hi: int)  @2:1
+    symbols:
+      lo       возвращаемое значение  int    @2:18
+      hi       возвращаемое значение  int    @2:27
+    requires: —
+    ensures:  —
+    body:
+      Block  @2:35
+        Assign lo = (neg 2147483648):int  @3:3
+        Assign hi = 2147483647  @4:3
+        If (-> (or (and true (not false):bool):bool (< lo:int hi:int):bool):bool (>= hi:int lo:int):bool):bool  @5:3
+          then:
+            Assign lo = (neg (neg lo:int):int):int  @5:50
+        If (or (== lo:int hi:int):bool (and (and (!= lo:int hi:int):bool (<= lo:int hi:int):bool):bool (> hi:int lo:int):bool):bool):bool  @6:3
+          then:
+            Assign hi = (- (/ (* (+ lo:int hi:int):int 2):int 2):int 1):int  @6:54

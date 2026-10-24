@@ -1,0 +1,8 @@
+f(a: int) returns r: int {
+  r = a ** 2;
+  if (a =< 2) r = 1;
+  if (a <> 2) r = 1;
+  r := 1;
+  r += 1;
+  if (a == 1 && a == 2) r = 1;
+}

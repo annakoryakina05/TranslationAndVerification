@@ -1,0 +1,5 @@
+// by the Funny spec locals can only be int (explicit int[] or inferred int[] is an error)
+f(a: int[]) returns r: int uses b: int[], c {
+  c = a;
+  r = 0;
+}

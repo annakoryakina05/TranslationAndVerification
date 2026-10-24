@@ -1,0 +1,8 @@
+// unknown functions and formulas
+f(x: int) returns r: int ensures positiv(r) {
+  r = gdc(x, 1);
+  r = nope();
+  assert isSorted(x);
+}
+gcd(a: int, b: int) returns r: int r = a;
+positive(x: int) => x > 0

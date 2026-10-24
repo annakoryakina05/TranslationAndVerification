@@ -1,0 +1,11 @@
+f(x: int) returns r: int {
+  r = ;
+  if x > 0) r = 1;
+  while (x) { r = r +; }
+  r = 3;
+}
+
+g() returns r: int {
+  r = 4;
+  r = ];
+}

@@ -1,0 +1,11 @@
+// wrong number and types of arguments, including builtin length and formulas
+g(a: int, b: int[]) returns r: int r = a;
+p(x: int) => x > 0
+f(x: int, arr: int[]) requires p(x, 1) and p(arr) returns r: int {
+  r = g(x);
+  r = g(x, arr, 3);
+  r = g(arr, x);
+  r = length(x);
+  r = length(arr, arr);
+  r = length();
+}

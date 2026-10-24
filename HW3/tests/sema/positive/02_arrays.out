@@ -1,0 +1,26 @@
+Module
+  Function incAll(a: int[]) -> (b: int[])  @2:1
+    symbols:
+      a        параметр               int[]  @2:8
+      b        возвращаемое значение  int[]  @4:11
+      i        локальная переменная   int    @6:8
+    requires: (> (call length a:int[]):int 0):bool
+    ensures:  (== (call length b:int[]):int (call length a:int[]):int):bool
+    body:
+      Block  @7:1
+        Assign b = a:int[]  @8:3
+        Assign i = 0  @9:3
+        While (< i:int (call length a:int[]):int):bool  @10:3
+          invariant: (and (>= i:int 0):bool (<= i:int (call length b:int[]):int):bool):bool
+          body:
+            Block  @10:61
+              Assign b = (store b i:int (+ (index a i:int):int 1):int):int[]  @11:5
+              Assign i = (+ i:int 1):int  @12:5
+  Function first(a: int[]) -> (x: int)  @16:1
+    symbols:
+      a        параметр               int[]  @16:7
+      x        возвращаемое значение  int    @16:48
+    requires: (> (call length a:int[]):int 0):bool
+    ensures:  —
+    body:
+      Assign x = (index a 0):int  @16:55

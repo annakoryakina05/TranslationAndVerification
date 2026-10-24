@@ -1,0 +1,7042 @@
+[
+ {
+  "id": "m000",
+  "group": "empty",
+  "mode": "match",
+  "input": "",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m001",
+  "group": "whitespace",
+  "mode": "match",
+  "input": " ",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m002",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "    ",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m003",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\t",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m004",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\t\t\t",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m005",
+  "group": "whitespace",
+  "mode": "match",
+  "input": " \t \t",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m006",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\n",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m007",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\r",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m008",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\r\n",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m009",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\r\n\r\n",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m010",
+  "group": "whitespace",
+  "mode": "match",
+  "input": " \t\r\n \t",
+  "expected": "WS",
+  "actual": "WS",
+  "status": "PASS"
+ },
+ {
+  "id": "m011",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\f",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m012",
+  "group": "whitespace",
+  "mode": "match",
+  "input": "\u000b",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m013",
+  "group": "integers",
+  "mode": "match",
+  "input": "0",
+  "expected": "INT",
+  "actual": "INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m014",
+  "group": "integers",
+  "mode": "match",
+  "input": "00",
+  "expected": "BAD_INT",
+  "actual": "BAD_INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m015",
+  "group": "integers",
+  "mode": "match",
+  "input": "01",
+  "expected": "BAD_INT",
+  "actual": "BAD_INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m016",
+  "group": "integers",
+  "mode": "match",
+  "input": "000",
+  "expected": "BAD_INT",
+  "actual": "BAD_INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m017",
+  "group": "integers",
+  "mode": "match",
+  "input": "0123",
+  "expected": "BAD_INT",
+  "actual": "BAD_INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m018",
+  "group": "integers",
+  "mode": "match",
+  "input": "1",
+  "expected": "INT",
+  "actual": "INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m019",
+  "group": "integers",
+  "mode": "match",
+  "input": "10",
+  "expected": "INT",
+  "actual": "INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m020",
+  "group": "integers",
+  "mode": "match",
+  "input": "100",
+  "expected": "INT",
+  "actual": "INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m021",
+  "group": "integers",
+  "mode": "match",
+  "input": "9876543210",
+  "expected": "INT",
+  "actual": "INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m022",
+  "group": "integers",
+  "mode": "match",
+  "input": "-1",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m023",
+  "group": "integers",
+  "mode": "match",
+  "input": "1a",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m024",
+  "group": "integers",
+  "mode": "match",
+  "input": "1_000",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m025",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "x",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m026",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "_",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m027",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "__",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m028",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "_x",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m029",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "x_",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m030",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "_1",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m031",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "a1_b2",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m032",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "snake_case_name",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m033",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "__init__",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m034",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "CamelCase",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m035",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "ZZ_99",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m036",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "x1",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m037",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "abc123",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m038",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "A",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m039",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "camelCase9",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m040",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "1x",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m041",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "a-b",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m042",
+  "group": "identifiers",
+  "mode": "match",
+  "input": "a b",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m043",
+  "group": "keywords",
+  "mode": "match",
+  "input": "function",
+  "expected": "KW_FUNCTION",
+  "actual": "KW_FUNCTION",
+  "status": "PASS"
+ },
+ {
+  "id": "m044",
+  "group": "keywords",
+  "mode": "match",
+  "input": "returns",
+  "expected": "KW_RETURNS",
+  "actual": "KW_RETURNS",
+  "status": "PASS"
+ },
+ {
+  "id": "m045",
+  "group": "keywords",
+  "mode": "match",
+  "input": "while",
+  "expected": "KW_WHILE",
+  "actual": "KW_WHILE",
+  "status": "PASS"
+ },
+ {
+  "id": "m046",
+  "group": "keywords",
+  "mode": "match",
+  "input": "if",
+  "expected": "KW_IF",
+  "actual": "KW_IF",
+  "status": "PASS"
+ },
+ {
+  "id": "m047",
+  "group": "keywords",
+  "mode": "match",
+  "input": "else",
+  "expected": "KW_ELSE",
+  "actual": "KW_ELSE",
+  "status": "PASS"
+ },
+ {
+  "id": "m048",
+  "group": "keywords",
+  "mode": "match",
+  "input": "assert",
+  "expected": "KW_ASSERT",
+  "actual": "KW_ASSERT",
+  "status": "PASS"
+ },
+ {
+  "id": "m049",
+  "group": "keywords",
+  "mode": "match",
+  "input": "assume",
+  "expected": "KW_ASSUME",
+  "actual": "KW_ASSUME",
+  "status": "PASS"
+ },
+ {
+  "id": "m050",
+  "group": "keywords",
+  "mode": "match",
+  "input": "invariant",
+  "expected": "KW_INVARIANT",
+  "actual": "KW_INVARIANT",
+  "status": "PASS"
+ },
+ {
+  "id": "m051",
+  "group": "keywords",
+  "mode": "match",
+  "input": "length",
+  "expected": "KW_LENGTH",
+  "actual": "KW_LENGTH",
+  "status": "PASS"
+ },
+ {
+  "id": "m052",
+  "group": "keywords",
+  "mode": "match",
+  "input": "requires",
+  "expected": "KW_REQUIRES",
+  "actual": "KW_REQUIRES",
+  "status": "PASS"
+ },
+ {
+  "id": "m053",
+  "group": "keywords",
+  "mode": "match",
+  "input": "ensures",
+  "expected": "KW_ENSURES",
+  "actual": "KW_ENSURES",
+  "status": "PASS"
+ },
+ {
+  "id": "m054",
+  "group": "keywords",
+  "mode": "match",
+  "input": "uses",
+  "expected": "KW_USES",
+  "actual": "KW_USES",
+  "status": "PASS"
+ },
+ {
+  "id": "m055",
+  "group": "keywords",
+  "mode": "match",
+  "input": "int",
+  "expected": "KW_INT",
+  "actual": "KW_INT",
+  "status": "PASS"
+ },
+ {
+  "id": "m056",
+  "group": "keywords",
+  "mode": "match",
+  "input": "true",
+  "expected": "KW_TRUE",
+  "actual": "KW_TRUE",
+  "status": "PASS"
+ },
+ {
+  "id": "m057",
+  "group": "keywords",
+  "mode": "match",
+  "input": "false",
+  "expected": "KW_FALSE",
+  "actual": "KW_FALSE",
+  "status": "PASS"
+ },
+ {
+  "id": "m058",
+  "group": "keywords",
+  "mode": "match",
+  "input": "not",
+  "expected": "KW_NOT",
+  "actual": "KW_NOT",
+  "status": "PASS"
+ },
+ {
+  "id": "m059",
+  "group": "keywords",
+  "mode": "match",
+  "input": "and",
+  "expected": "KW_AND",
+  "actual": "KW_AND",
+  "status": "PASS"
+ },
+ {
+  "id": "m060",
+  "group": "keywords",
+  "mode": "match",
+  "input": "or",
+  "expected": "KW_OR",
+  "actual": "KW_OR",
+  "status": "PASS"
+ },
+ {
+  "id": "m061",
+  "group": "keywords",
+  "mode": "match",
+  "input": "forall",
+  "expected": "KW_FORALL",
+  "actual": "KW_FORALL",
+  "status": "PASS"
+ },
+ {
+  "id": "m062",
+  "group": "keywords",
+  "mode": "match",
+  "input": "exists",
+  "expected": "KW_EXISTS",
+  "actual": "KW_EXISTS",
+  "status": "PASS"
+ },
+ {
+  "id": "m063",
+  "group": "keywords",
+  "mode": "match",
+  "input": "integer",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m064",
+  "group": "keywords",
+  "mode": "match",
+  "input": "in",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m065",
+  "group": "keywords",
+  "mode": "match",
+  "input": "ints",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m066",
+  "group": "keywords",
+  "mode": "match",
+  "input": "andor",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m067",
+  "group": "keywords",
+  "mode": "match",
+  "input": "o",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m068",
+  "group": "keywords",
+  "mode": "match",
+  "input": "nothing",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m069",
+  "group": "keywords",
+  "mode": "match",
+  "input": "True",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m070",
+  "group": "keywords",
+  "mode": "match",
+  "input": "falsey",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m071",
+  "group": "keywords",
+  "mode": "match",
+  "input": "use",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m072",
+  "group": "keywords",
+  "mode": "match",
+  "input": "ensure",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m073",
+  "group": "keywords",
+  "mode": "match",
+  "input": "forall1",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m074",
+  "group": "keywords",
+  "mode": "match",
+  "input": "exist",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m075",
+  "group": "keywords",
+  "mode": "match",
+  "input": "functions",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m076",
+  "group": "keywords",
+  "mode": "match",
+  "input": "func",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m077",
+  "group": "keywords",
+  "mode": "match",
+  "input": "return",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m078",
+  "group": "keywords",
+  "mode": "match",
+  "input": "returns_",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m079",
+  "group": "keywords",
+  "mode": "match",
+  "input": "i",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m080",
+  "group": "keywords",
+  "mode": "match",
+  "input": "iff",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m081",
+  "group": "keywords",
+  "mode": "match",
+  "input": "If",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m082",
+  "group": "keywords",
+  "mode": "match",
+  "input": "IF",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m083",
+  "group": "keywords",
+  "mode": "match",
+  "input": "elsewhere",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m084",
+  "group": "keywords",
+  "mode": "match",
+  "input": "_while",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m085",
+  "group": "keywords",
+  "mode": "match",
+  "input": "while1",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m086",
+  "group": "keywords",
+  "mode": "match",
+  "input": "assum",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m087",
+  "group": "keywords",
+  "mode": "match",
+  "input": "asserts",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m088",
+  "group": "keywords",
+  "mode": "match",
+  "input": "invariants",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m089",
+  "group": "keywords",
+  "mode": "match",
+  "input": "len",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m090",
+  "group": "keywords",
+  "mode": "match",
+  "input": "lengths",
+  "expected": "IDENT",
+  "actual": "IDENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m091",
+  "group": "operators",
+  "mode": "match",
+  "input": "(",
+  "expected": "LPAREN",
+  "actual": "LPAREN",
+  "status": "PASS"
+ },
+ {
+  "id": "m092",
+  "group": "operators",
+  "mode": "match",
+  "input": ")",
+  "expected": "RPAREN",
+  "actual": "RPAREN",
+  "status": "PASS"
+ },
+ {
+  "id": "m093",
+  "group": "operators",
+  "mode": "match",
+  "input": "[",
+  "expected": "LBRACKET",
+  "actual": "LBRACKET",
+  "status": "PASS"
+ },
+ {
+  "id": "m094",
+  "group": "operators",
+  "mode": "match",
+  "input": "]",
+  "expected": "RBRACKET",
+  "actual": "RBRACKET",
+  "status": "PASS"
+ },
+ {
+  "id": "m095",
+  "group": "operators",
+  "mode": "match",
+  "input": "{",
+  "expected": "LBRACE",
+  "actual": "LBRACE",
+  "status": "PASS"
+ },
+ {
+  "id": "m096",
+  "group": "operators",
+  "mode": "match",
+  "input": "}",
+  "expected": "RBRACE",
+  "actual": "RBRACE",
+  "status": "PASS"
+ },
+ {
+  "id": "m097",
+  "group": "operators",
+  "mode": "match",
+  "input": ",",
+  "expected": "COMMA",
+  "actual": "COMMA",
+  "status": "PASS"
+ },
+ {
+  "id": "m098",
+  "group": "operators",
+  "mode": "match",
+  "input": ";",
+  "expected": "SEMI",
+  "actual": "SEMI",
+  "status": "PASS"
+ },
+ {
+  "id": "m099",
+  "group": "operators",
+  "mode": "match",
+  "input": "+",
+  "expected": "PLUS",
+  "actual": "PLUS",
+  "status": "PASS"
+ },
+ {
+  "id": "m100",
+  "group": "operators",
+  "mode": "match",
+  "input": "-",
+  "expected": "MINUS",
+  "actual": "MINUS",
+  "status": "PASS"
+ },
+ {
+  "id": "m101",
+  "group": "operators",
+  "mode": "match",
+  "input": "*",
+  "expected": "STAR",
+  "actual": "STAR",
+  "status": "PASS"
+ },
+ {
+  "id": "m102",
+  "group": "operators",
+  "mode": "match",
+  "input": "/",
+  "expected": "SLASH",
+  "actual": "SLASH",
+  "status": "PASS"
+ },
+ {
+  "id": "m103",
+  "group": "operators",
+  "mode": "match",
+  "input": "==",
+  "expected": "EQ",
+  "actual": "EQ",
+  "status": "PASS"
+ },
+ {
+  "id": "m104",
+  "group": "operators",
+  "mode": "match",
+  "input": "!=",
+  "expected": "NE",
+  "actual": "NE",
+  "status": "PASS"
+ },
+ {
+  "id": "m105",
+  "group": "operators",
+  "mode": "match",
+  "input": "<=",
+  "expected": "LE",
+  "actual": "LE",
+  "status": "PASS"
+ },
+ {
+  "id": "m106",
+  "group": "operators",
+  "mode": "match",
+  "input": ">=",
+  "expected": "GE",
+  "actual": "GE",
+  "status": "PASS"
+ },
+ {
+  "id": "m107",
+  "group": "operators",
+  "mode": "match",
+  "input": "<",
+  "expected": "LT",
+  "actual": "LT",
+  "status": "PASS"
+ },
+ {
+  "id": "m108",
+  "group": "operators",
+  "mode": "match",
+  "input": ">",
+  "expected": "GT",
+  "actual": "GT",
+  "status": "PASS"
+ },
+ {
+  "id": "m109",
+  "group": "operators",
+  "mode": "match",
+  "input": "=",
+  "expected": "ASSIGN",
+  "actual": "ASSIGN",
+  "status": "PASS"
+ },
+ {
+  "id": "m110",
+  "group": "operators",
+  "mode": "match",
+  "input": "!",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m111",
+  "group": "operators",
+  "mode": "match",
+  "input": "===",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m112",
+  "group": "operators",
+  "mode": "match",
+  "input": "=<",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m113",
+  "group": "operators",
+  "mode": "match",
+  "input": "=>",
+  "expected": "FAT_ARROW",
+  "actual": "FAT_ARROW",
+  "status": "PASS"
+ },
+ {
+  "id": "m114",
+  "group": "operators",
+  "mode": "match",
+  "input": "->",
+  "expected": "ARROW",
+  "actual": "ARROW",
+  "status": "PASS"
+ },
+ {
+  "id": "m115",
+  "group": "operators",
+  "mode": "match",
+  "input": ":",
+  "expected": "COLON",
+  "actual": "COLON",
+  "status": "PASS"
+ },
+ {
+  "id": "m116",
+  "group": "operators",
+  "mode": "match",
+  "input": "|",
+  "expected": "BAR",
+  "actual": "BAR",
+  "status": "PASS"
+ },
+ {
+  "id": "m117",
+  "group": "operators",
+  "mode": "match",
+  "input": "-->",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m118",
+  "group": "operators",
+  "mode": "match",
+  "input": "||",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m119",
+  "group": "operators",
+  "mode": "match",
+  "input": "::",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m120",
+  "group": "operators",
+  "mode": "match",
+  "input": "→",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m121",
+  "group": "operators",
+  "mode": "match",
+  "input": "<>",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m122",
+  "group": "operators",
+  "mode": "match",
+  "input": "++",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m123",
+  "group": "operators",
+  "mode": "match",
+  "input": "+=",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m124",
+  "group": "operators",
+  "mode": "match",
+  "input": "&&",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m125",
+  "group": "comments",
+  "mode": "match",
+  "input": "//",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m126",
+  "group": "comments",
+  "mode": "match",
+  "input": "// hello",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m127",
+  "group": "comments",
+  "mode": "match",
+  "input": "//no space",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m128",
+  "group": "comments",
+  "mode": "match",
+  "input": "/// triple",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m129",
+  "group": "comments",
+  "mode": "match",
+  "input": "// a // b",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m130",
+  "group": "comments",
+  "mode": "match",
+  "input": "//\t tab",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m131",
+  "group": "comments",
+  "mode": "match",
+  "input": "// if while 00 @#$ !",
+  "expected": "COMMENT",
+  "actual": "COMMENT",
+  "status": "PASS"
+ },
+ {
+  "id": "m132",
+  "group": "comments",
+  "mode": "match",
+  "input": "//x\n",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m133",
+  "group": "comments",
+  "mode": "match",
+  "input": "//x\r",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m134",
+  "group": "comments",
+  "mode": "match",
+  "input": "/ /",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m135",
+  "group": "trap",
+  "mode": "match",
+  "input": "é",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m136",
+  "group": "trap",
+  "mode": "match",
+  "input": "привет",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m137",
+  "group": "trap",
+  "mode": "match",
+  "input": "€",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m138",
+  "group": "trap",
+  "mode": "match",
+  "input": "😀",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m139",
+  "group": "trap",
+  "mode": "match",
+  "input": " ",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m140",
+  "group": "trap",
+  "mode": "match",
+  "input": "xé",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m141",
+  "group": "trap",
+  "mode": "match",
+  "input": "1é",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m142",
+  "group": "trap",
+  "mode": "match",
+  "input": "//é",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m143",
+  "group": "trap",
+  "mode": "match",
+  "input": "@",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m144",
+  "group": "trap",
+  "mode": "match",
+  "input": "#",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m145",
+  "group": "trap",
+  "mode": "match",
+  "input": "$",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m146",
+  "group": "trap",
+  "mode": "match",
+  "input": "`",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m147",
+  "group": "trap",
+  "mode": "match",
+  "input": "~",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m148",
+  "group": "trap",
+  "mode": "match",
+  "input": "\\",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m149",
+  "group": "trap",
+  "mode": "match",
+  "input": "\"",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m150",
+  "group": "trap",
+  "mode": "match",
+  "input": "'",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m151",
+  "group": "trap",
+  "mode": "match",
+  "input": "\u0000",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "m152",
+  "group": "trap",
+  "mode": "match",
+  "input": "",
+  "expected": null,
+  "actual": null,
+  "status": "PASS"
+ },
+ {
+  "id": "t000",
+  "group": "empty",
+  "mode": "tokens",
+  "input": "",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "пустой вход"
+ },
+ {
+  "id": "t001",
+  "group": "whitespace",
+  "mode": "tokens",
+  "input": "     ",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "только пробелы"
+ },
+ {
+  "id": "t002",
+  "group": "whitespace",
+  "mode": "tokens",
+  "input": "\t\t\t",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "только табы"
+ },
+ {
+  "id": "t003",
+  "group": "whitespace",
+  "mode": "tokens",
+  "input": "\r\n\r\n",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "только CRLF"
+ },
+ {
+  "id": "t004",
+  "group": "whitespace",
+  "mode": "tokens",
+  "input": " \t\r\n \t\r\n",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "смесь"
+ },
+ {
+  "id": "t005",
+  "group": "whitespace",
+  "mode": "tokens",
+  "input": " x\t\r\n",
+  "expected": [
+   [
+    "WS",
+    " "
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "WS",
+    "\t\r\n"
+   ]
+  ],
+  "actual": [
+   [
+    "WS",
+    " "
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "WS",
+    "\t\r\n"
+   ]
+  ],
+  "status": "PASS",
+  "name": "keep_skip"
+ },
+ {
+  "id": "t006",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "0 00 01",
+  "expected": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "BAD_INT",
+    "00"
+   ],
+   [
+    "BAD_INT",
+    "01"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "BAD_INT",
+    "00"
+   ],
+   [
+    "BAD_INT",
+    "01"
+   ]
+  ],
+  "status": "PASS",
+  "name": "0 00 01"
+ },
+ {
+  "id": "t007",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "0;",
+  "expected": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "status": "PASS",
+  "name": "0;"
+ },
+ {
+  "id": "t008",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "10 0 7",
+  "expected": [
+   [
+    "INT",
+    "10"
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "INT",
+    "7"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "10"
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "INT",
+    "7"
+   ]
+  ],
+  "status": "PASS",
+  "name": "несколько"
+ },
+ {
+  "id": "t009",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "-0",
+  "expected": [
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "INT",
+    "0"
+   ]
+  ],
+  "actual": [
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "INT",
+    "0"
+   ]
+  ],
+  "status": "PASS",
+  "name": "минус не часть числа"
+ },
+ {
+  "id": "t010",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "0x1",
+  "expected": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "IDENT",
+    "x1"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "IDENT",
+    "x1"
+   ]
+  ],
+  "status": "PASS",
+  "name": "0x1"
+ },
+ {
+  "id": "t011",
+  "group": "integers",
+  "mode": "tokens",
+  "input": "123abc",
+  "expected": [
+   [
+    "INT",
+    "123"
+   ],
+   [
+    "IDENT",
+    "abc"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "123"
+   ],
+   [
+    "IDENT",
+    "abc"
+   ]
+  ],
+  "status": "PASS",
+  "name": "число+идентификатор"
+ },
+ {
+  "id": "t012",
+  "group": "identifiers",
+  "mode": "tokens",
+  "input": "_tmp1 = x_2",
+  "expected": [
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "IDENT",
+    "tmp1"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "INT",
+    "2"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "IDENT",
+    "tmp1"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "INT",
+    "2"
+   ]
+  ],
+  "status": "PASS",
+  "name": "подчёркивание запрещено спецификацией"
+ },
+ {
+  "id": "t013",
+  "group": "identifiers",
+  "mode": "tokens",
+  "input": "snake_case",
+  "expected": [
+   [
+    "IDENT",
+    "snake"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "IDENT",
+    "case"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "snake"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "IDENT",
+    "case"
+   ]
+  ],
+  "status": "PASS",
+  "name": "_ внутри имени"
+ },
+ {
+  "id": "t014",
+  "group": "identifiers",
+  "mode": "tokens",
+  "input": "a1 B2c3 x",
+  "expected": [
+   [
+    "IDENT",
+    "a1"
+   ],
+   [
+    "IDENT",
+    "B2c3"
+   ],
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a1"
+   ],
+   [
+    "IDENT",
+    "B2c3"
+   ],
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "status": "PASS",
+  "name": "буквы и цифры"
+ },
+ {
+  "id": "t015",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "function returns while if else assert assume invariant length",
+  "expected": [
+   [
+    "KW_FUNCTION",
+    "function"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "KW_WHILE",
+    "while"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "KW_ELSE",
+    "else"
+   ],
+   [
+    "KW_ASSERT",
+    "assert"
+   ],
+   [
+    "KW_ASSUME",
+    "assume"
+   ],
+   [
+    "KW_INVARIANT",
+    "invariant"
+   ],
+   [
+    "KW_LENGTH",
+    "length"
+   ]
+  ],
+  "actual": [
+   [
+    "KW_FUNCTION",
+    "function"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "KW_WHILE",
+    "while"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "KW_ELSE",
+    "else"
+   ],
+   [
+    "KW_ASSERT",
+    "assert"
+   ],
+   [
+    "KW_ASSUME",
+    "assume"
+   ],
+   [
+    "KW_INVARIANT",
+    "invariant"
+   ],
+   [
+    "KW_LENGTH",
+    "length"
+   ]
+  ],
+  "status": "PASS",
+  "name": "все ключевые слова"
+ },
+ {
+  "id": "t016",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "if iff ifx _if",
+  "expected": [
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "IDENT",
+    "iff"
+   ],
+   [
+    "IDENT",
+    "ifx"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ]
+  ],
+  "actual": [
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "IDENT",
+    "iff"
+   ],
+   [
+    "IDENT",
+    "ifx"
+   ],
+   [
+    "ERROR",
+    "_"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ]
+  ],
+  "status": "PASS",
+  "name": "префиксы/суффиксы"
+ },
+ {
+  "id": "t017",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "requires ensures uses int true false not and or forall exists",
+  "expected": [
+   [
+    "KW_REQUIRES",
+    "requires"
+   ],
+   [
+    "KW_ENSURES",
+    "ensures"
+   ],
+   [
+    "KW_USES",
+    "uses"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_TRUE",
+    "true"
+   ],
+   [
+    "KW_FALSE",
+    "false"
+   ],
+   [
+    "KW_NOT",
+    "not"
+   ],
+   [
+    "KW_AND",
+    "and"
+   ],
+   [
+    "KW_OR",
+    "or"
+   ],
+   [
+    "KW_FORALL",
+    "forall"
+   ],
+   [
+    "KW_EXISTS",
+    "exists"
+   ]
+  ],
+  "actual": [
+   [
+    "KW_REQUIRES",
+    "requires"
+   ],
+   [
+    "KW_ENSURES",
+    "ensures"
+   ],
+   [
+    "KW_USES",
+    "uses"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_TRUE",
+    "true"
+   ],
+   [
+    "KW_FALSE",
+    "false"
+   ],
+   [
+    "KW_NOT",
+    "not"
+   ],
+   [
+    "KW_AND",
+    "and"
+   ],
+   [
+    "KW_OR",
+    "or"
+   ],
+   [
+    "KW_FORALL",
+    "forall"
+   ],
+   [
+    "KW_EXISTS",
+    "exists"
+   ]
+  ],
+  "status": "PASS",
+  "name": "ключевые слова из спецификации"
+ },
+ {
+  "id": "t018",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "a: int[]",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ]
+  ],
+  "status": "PASS",
+  "name": "int[]"
+ },
+ {
+  "id": "t019",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "functionreturns",
+  "expected": [
+   [
+    "IDENT",
+    "functionreturns"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "functionreturns"
+   ]
+  ],
+  "status": "PASS",
+  "name": "слитно"
+ },
+ {
+  "id": "t020",
+  "group": "keywords",
+  "mode": "tokens",
+  "input": "1if",
+  "expected": [
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ]
+  ],
+  "status": "PASS",
+  "name": "цифра перед if"
+ },
+ {
+  "id": "t021",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "()[]{},;",
+  "expected": [
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "actual": [
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "status": "PASS",
+  "name": "разделители"
+ },
+ {
+  "id": "t022",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "+-*/",
+  "expected": [
+   [
+    "PLUS",
+    "+"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "STAR",
+    "*"
+   ],
+   [
+    "SLASH",
+    "/"
+   ]
+  ],
+  "actual": [
+   [
+    "PLUS",
+    "+"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "STAR",
+    "*"
+   ],
+   [
+    "SLASH",
+    "/"
+   ]
+  ],
+  "status": "PASS",
+  "name": "арифметика"
+ },
+ {
+  "id": "t023",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "a==b!=c<=d>=e<f>g=h",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "IDENT",
+    "c"
+   ],
+   [
+    "LE",
+    "<="
+   ],
+   [
+    "IDENT",
+    "d"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "IDENT",
+    "e"
+   ],
+   [
+    "LT",
+    "<"
+   ],
+   [
+    "IDENT",
+    "f"
+   ],
+   [
+    "GT",
+    ">"
+   ],
+   [
+    "IDENT",
+    "g"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "h"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "IDENT",
+    "c"
+   ],
+   [
+    "LE",
+    "<="
+   ],
+   [
+    "IDENT",
+    "d"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "IDENT",
+    "e"
+   ],
+   [
+    "LT",
+    "<"
+   ],
+   [
+    "IDENT",
+    "f"
+   ],
+   [
+    "GT",
+    ">"
+   ],
+   [
+    "IDENT",
+    "g"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "h"
+   ]
+  ],
+  "status": "PASS",
+  "name": "сравнения слитно"
+ },
+ {
+  "id": "t024",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "===",
+  "expected": [
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "actual": [
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "status": "PASS",
+  "name": "==="
+ },
+ {
+  "id": "t025",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "<==",
+  "expected": [
+   [
+    "LE",
+    "<="
+   ],
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "actual": [
+   [
+    "LE",
+    "<="
+   ],
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "status": "PASS",
+  "name": "<=="
+ },
+ {
+  "id": "t026",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "!=!",
+  "expected": [
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "ERROR",
+    "!"
+   ]
+  ],
+  "actual": [
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "ERROR",
+    "!"
+   ]
+  ],
+  "status": "PASS",
+  "name": "!=!"
+ },
+ {
+  "id": "t027",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "a->b",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "status": "PASS",
+  "name": "импликация"
+ },
+ {
+  "id": "t028",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "a-->b x-1",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "INT",
+    "1"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "MINUS",
+    "-"
+   ],
+   [
+    "INT",
+    "1"
+   ]
+  ],
+  "status": "PASS",
+  "name": "минус и импликация"
+ },
+ {
+  "id": "t029",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "=>>===",
+  "expected": [
+   [
+    "FAT_ARROW",
+    "=>"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "EQ",
+    "=="
+   ]
+  ],
+  "actual": [
+   [
+    "FAT_ARROW",
+    "=>"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "EQ",
+    "=="
+   ]
+  ],
+  "status": "PASS",
+  "name": "=> vs >= vs =="
+ },
+ {
+  "id": "t030",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "p → q",
+  "expected": [
+   [
+    "IDENT",
+    "p"
+   ],
+   [
+    "ERROR",
+    "→"
+   ],
+   [
+    "IDENT",
+    "q"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "p"
+   ],
+   [
+    "ERROR",
+    "→"
+   ],
+   [
+    "IDENT",
+    "q"
+   ]
+  ],
+  "status": "PASS",
+  "name": "стрелка → вне ASCII"
+ },
+ {
+  "id": "t031",
+  "group": "operators",
+  "mode": "tokens",
+  "input": "!x",
+  "expected": [
+   [
+    "ERROR",
+    "!"
+   ],
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "!"
+   ],
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "status": "PASS",
+  "name": "одиночный !"
+ },
+ {
+  "id": "t032",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "a = b / c // comment",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "status": "PASS",
+  "name": "деление vs комментарий"
+ },
+ {
+  "id": "t033",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "x // c1\ny // c2\r\nz",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "IDENT",
+    "z"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "IDENT",
+    "z"
+   ]
+  ],
+  "status": "PASS",
+  "name": "до конца строки (LF и CRLF)"
+ },
+ {
+  "id": "t034",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "// only comment",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "только комментарий"
+ },
+ {
+  "id": "t035",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "//a\n//b",
+  "expected": [],
+  "actual": [],
+  "status": "PASS",
+  "name": "два комментария"
+ },
+ {
+  "id": "t036",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "a/ /b",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "SLASH",
+    "/"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "status": "PASS",
+  "name": "/ / — не комментарий"
+ },
+ {
+  "id": "t037",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "x//c\n",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COMMENT",
+    "//c"
+   ],
+   [
+    "WS",
+    "\n"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COMMENT",
+    "//c"
+   ],
+   [
+    "WS",
+    "\n"
+   ]
+  ],
+  "status": "PASS",
+  "name": "keep_skip"
+ },
+ {
+  "id": "t038",
+  "group": "comments",
+  "mode": "tokens",
+  "input": "x = 1 // tail\r\ny = 00",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "BAD_INT",
+    "00"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "BAD_INT",
+    "00"
+   ]
+  ],
+  "status": "PASS",
+  "name": "CRLF + 00"
+ },
+ {
+  "id": "t039",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "a @ b",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ERROR",
+    "@"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ERROR",
+    "@"
+   ],
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "status": "PASS",
+  "name": "ASCII вне языка"
+ },
+ {
+  "id": "t040",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "x = é;",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "ERROR",
+    "é"
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "ERROR",
+    "é"
+   ],
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "status": "PASS",
+  "name": "non-ASCII в выражении"
+ },
+ {
+  "id": "t041",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "//é",
+  "expected": [
+   [
+    "ERROR",
+    "é"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "é"
+   ]
+  ],
+  "status": "PASS",
+  "name": "non-ASCII в комментарии"
+ },
+ {
+  "id": "t042",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "abécd",
+  "expected": [
+   [
+    "IDENT",
+    "ab"
+   ],
+   [
+    "ERROR",
+    "é"
+   ],
+   [
+    "IDENT",
+    "cd"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "ab"
+   ],
+   [
+    "ERROR",
+    "é"
+   ],
+   [
+    "IDENT",
+    "cd"
+   ]
+  ],
+  "status": "PASS",
+  "name": "non-ASCII внутри идентификатора"
+ },
+ {
+  "id": "t043",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "ab cd",
+  "expected": [
+   [
+    "IDENT",
+    "ab"
+   ],
+   [
+    "ERROR",
+    " "
+   ],
+   [
+    "IDENT",
+    "cd"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "ab"
+   ],
+   [
+    "ERROR",
+    " "
+   ],
+   [
+    "IDENT",
+    "cd"
+   ]
+  ],
+  "status": "PASS",
+  "name": "NBSP"
+ },
+ {
+  "id": "t044",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "да",
+  "expected": [
+   [
+    "ERROR",
+    "д"
+   ],
+   [
+    "ERROR",
+    "а"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "д"
+   ],
+   [
+    "ERROR",
+    "а"
+   ]
+  ],
+  "status": "PASS",
+  "name": "кириллица"
+ },
+ {
+  "id": "t045",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "x😀y",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "😀"
+   ],
+   [
+    "IDENT",
+    "y"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "😀"
+   ],
+   [
+    "IDENT",
+    "y"
+   ]
+  ],
+  "status": "PASS",
+  "name": "эмодзи"
+ },
+ {
+  "id": "t046",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "x\u0000",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "\u0000"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "ERROR",
+    "\u0000"
+   ]
+  ],
+  "status": "PASS",
+  "name": "NUL"
+ },
+ {
+  "id": "t047",
+  "group": "trap",
+  "mode": "tokens",
+  "input": "a#b$c",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ERROR",
+    "#"
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "ERROR",
+    "$"
+   ],
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "ERROR",
+    "#"
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "ERROR",
+    "$"
+   ],
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "status": "PASS",
+  "name": "смесь мусора"
+ },
+ {
+  "id": "t048",
+  "group": "program",
+  "mode": "tokens",
+  "input": "gcd(x: int, y: int)\n  returns r: int\n  uses a: int, b: int  // local variable declarations\n",
+  "expected": [
+   [
+    "IDENT",
+    "gcd"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "r"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_USES",
+    "uses"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "gcd"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "r"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_USES",
+    "uses"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ]
+  ],
+  "status": "PASS",
+  "name": "пример gcd из спецификации"
+ },
+ {
+  "id": "t049",
+  "group": "program",
+  "mode": "tokens",
+  "input": "sum(a: int[]) requires forall(i: int | a[i] >= 0) returns s: int ensures s >= 0 and not false",
+  "expected": [
+   [
+    "IDENT",
+    "sum"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_REQUIRES",
+    "requires"
+   ],
+   [
+    "KW_FORALL",
+    "forall"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "BAR",
+    "|"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "s"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_ENSURES",
+    "ensures"
+   ],
+   [
+    "IDENT",
+    "s"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "KW_AND",
+    "and"
+   ],
+   [
+    "KW_NOT",
+    "not"
+   ],
+   [
+    "KW_FALSE",
+    "false"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "sum"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_REQUIRES",
+    "requires"
+   ],
+   [
+    "KW_FORALL",
+    "forall"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "BAR",
+    "|"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "s"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "KW_ENSURES",
+    "ensures"
+   ],
+   [
+    "IDENT",
+    "s"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "KW_AND",
+    "and"
+   ],
+   [
+    "KW_NOT",
+    "not"
+   ],
+   [
+    "KW_FALSE",
+    "false"
+   ]
+  ],
+  "status": "PASS",
+  "name": "контракт с квантором"
+ },
+ {
+  "id": "t050",
+  "group": "program",
+  "mode": "tokens",
+  "input": "pos(x: int) => x > 0 or exists(y: int | y == x) -> true",
+  "expected": [
+   [
+    "IDENT",
+    "pos"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "FAT_ARROW",
+    "=>"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "GT",
+    ">"
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "KW_OR",
+    "or"
+   ],
+   [
+    "KW_EXISTS",
+    "exists"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "BAR",
+    "|"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "KW_TRUE",
+    "true"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "pos"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "FAT_ARROW",
+    "=>"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "GT",
+    ">"
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "KW_OR",
+    "or"
+   ],
+   [
+    "KW_EXISTS",
+    "exists"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "COLON",
+    ":"
+   ],
+   [
+    "KW_INT",
+    "int"
+   ],
+   [
+    "BAR",
+    "|"
+   ],
+   [
+    "IDENT",
+    "y"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "ARROW",
+    "->"
+   ],
+   [
+    "KW_TRUE",
+    "true"
+   ]
+  ],
+  "status": "PASS",
+  "name": "формула"
+ },
+ {
+  "id": "t051",
+  "group": "program",
+  "mode": "tokens",
+  "input": "function max(a, b) returns m {\n  if (a >= b) { m = a; } else { m = b; }\n}\n",
+  "expected": [
+   [
+    "KW_FUNCTION",
+    "function"
+   ],
+   [
+    "IDENT",
+    "max"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "KW_ELSE",
+    "else"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "actual": [
+   [
+    "KW_FUNCTION",
+    "function"
+   ],
+   [
+    "IDENT",
+    "max"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "COMMA",
+    ","
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_RETURNS",
+    "returns"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "KW_IF",
+    "if"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "KW_ELSE",
+    "else"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "IDENT",
+    "m"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "b"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "status": "PASS",
+  "name": "max"
+ },
+ {
+  "id": "t052",
+  "group": "program",
+  "mode": "tokens",
+  "input": "while (i < length(a)) invariant i >= 0 {\r\n  assert a[i] != 0;\r\n  assume x == 1;\r\n  i = i + 1; // step\r\n}",
+  "expected": [
+   [
+    "KW_WHILE",
+    "while"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "LT",
+    "<"
+   ],
+   [
+    "KW_LENGTH",
+    "length"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_INVARIANT",
+    "invariant"
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "KW_ASSERT",
+    "assert"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "KW_ASSUME",
+    "assume"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "PLUS",
+    "+"
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "actual": [
+   [
+    "KW_WHILE",
+    "while"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "LT",
+    "<"
+   ],
+   [
+    "KW_LENGTH",
+    "length"
+   ],
+   [
+    "LPAREN",
+    "("
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "RPAREN",
+    ")"
+   ],
+   [
+    "KW_INVARIANT",
+    "invariant"
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "GE",
+    ">="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "LBRACE",
+    "{"
+   ],
+   [
+    "KW_ASSERT",
+    "assert"
+   ],
+   [
+    "IDENT",
+    "a"
+   ],
+   [
+    "LBRACKET",
+    "["
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "RBRACKET",
+    "]"
+   ],
+   [
+    "NE",
+    "!="
+   ],
+   [
+    "INT",
+    "0"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "KW_ASSUME",
+    "assume"
+   ],
+   [
+    "IDENT",
+    "x"
+   ],
+   [
+    "EQ",
+    "=="
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "ASSIGN",
+    "="
+   ],
+   [
+    "IDENT",
+    "i"
+   ],
+   [
+    "PLUS",
+    "+"
+   ],
+   [
+    "INT",
+    "1"
+   ],
+   [
+    "SEMI",
+    ";"
+   ],
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "status": "PASS",
+  "name": "цикл с инвариантом"
+ },
+ {
+  "id": "a00000",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0000",
+  "expected": [
+   [
+    "ERROR",
+    "\u0000"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0000"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00001",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0001",
+  "expected": [
+   [
+    "ERROR",
+    "\u0001"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0001"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00002",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0002",
+  "expected": [
+   [
+    "ERROR",
+    "\u0002"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0002"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00003",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0003",
+  "expected": [
+   [
+    "ERROR",
+    "\u0003"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0003"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00004",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0004",
+  "expected": [
+   [
+    "ERROR",
+    "\u0004"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0004"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00005",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0005",
+  "expected": [
+   [
+    "ERROR",
+    "\u0005"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0005"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00006",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0006",
+  "expected": [
+   [
+    "ERROR",
+    "\u0006"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0006"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00007",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0007",
+  "expected": [
+   [
+    "ERROR",
+    "\u0007"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0007"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00008",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\b",
+  "expected": [
+   [
+    "ERROR",
+    "\b"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\b"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00009",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\t",
+  "expected": [
+   [
+    "WS",
+    "\t"
+   ]
+  ],
+  "actual": [
+   [
+    "WS",
+    "\t"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\n",
+  "expected": [
+   [
+    "WS",
+    "\n"
+   ]
+  ],
+  "actual": [
+   [
+    "WS",
+    "\n"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u000b",
+  "expected": [
+   [
+    "ERROR",
+    "\u000b"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u000b"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\f",
+  "expected": [
+   [
+    "ERROR",
+    "\f"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\f"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\r",
+  "expected": [
+   [
+    "WS",
+    "\r"
+   ]
+  ],
+  "actual": [
+   [
+    "WS",
+    "\r"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u000e",
+  "expected": [
+   [
+    "ERROR",
+    "\u000e"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u000e"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0000f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u000f",
+  "expected": [
+   [
+    "ERROR",
+    "\u000f"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u000f"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00010",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0010",
+  "expected": [
+   [
+    "ERROR",
+    "\u0010"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0010"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00011",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0011",
+  "expected": [
+   [
+    "ERROR",
+    "\u0011"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0011"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00012",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0012",
+  "expected": [
+   [
+    "ERROR",
+    "\u0012"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0012"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00013",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0013",
+  "expected": [
+   [
+    "ERROR",
+    "\u0013"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0013"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00014",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0014",
+  "expected": [
+   [
+    "ERROR",
+    "\u0014"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0014"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00015",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0015",
+  "expected": [
+   [
+    "ERROR",
+    "\u0015"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0015"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00016",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0016",
+  "expected": [
+   [
+    "ERROR",
+    "\u0016"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0016"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00017",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0017",
+  "expected": [
+   [
+    "ERROR",
+    "\u0017"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0017"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00018",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0018",
+  "expected": [
+   [
+    "ERROR",
+    "\u0018"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0018"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00019",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u0019",
+  "expected": [
+   [
+    "ERROR",
+    "\u0019"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u0019"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001a",
+  "expected": [
+   [
+    "ERROR",
+    "\u001a"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001a"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001b",
+  "expected": [
+   [
+    "ERROR",
+    "\u001b"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001b"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001c",
+  "expected": [
+   [
+    "ERROR",
+    "\u001c"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001c"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001d",
+  "expected": [
+   [
+    "ERROR",
+    "\u001d"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001d"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001e",
+  "expected": [
+   [
+    "ERROR",
+    "\u001e"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001e"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0001f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\u001f",
+  "expected": [
+   [
+    "ERROR",
+    "\u001f"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\u001f"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00020",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": " ",
+  "expected": [
+   [
+    "WS",
+    " "
+   ]
+  ],
+  "actual": [
+   [
+    "WS",
+    " "
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00021",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "!",
+  "expected": [
+   [
+    "ERROR",
+    "!"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "!"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00022",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\"",
+  "expected": [
+   [
+    "ERROR",
+    "\""
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\""
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00023",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "#",
+  "expected": [
+   [
+    "ERROR",
+    "#"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "#"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00024",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "$",
+  "expected": [
+   [
+    "ERROR",
+    "$"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "$"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00025",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "%",
+  "expected": [
+   [
+    "ERROR",
+    "%"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "%"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00026",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "&",
+  "expected": [
+   [
+    "ERROR",
+    "&"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "&"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00027",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "'",
+  "expected": [
+   [
+    "ERROR",
+    "'"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "'"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00028",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "(",
+  "expected": [
+   [
+    "LPAREN",
+    "("
+   ]
+  ],
+  "actual": [
+   [
+    "LPAREN",
+    "("
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00029",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ")",
+  "expected": [
+   [
+    "RPAREN",
+    ")"
+   ]
+  ],
+  "actual": [
+   [
+    "RPAREN",
+    ")"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "*",
+  "expected": [
+   [
+    "STAR",
+    "*"
+   ]
+  ],
+  "actual": [
+   [
+    "STAR",
+    "*"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "+",
+  "expected": [
+   [
+    "PLUS",
+    "+"
+   ]
+  ],
+  "actual": [
+   [
+    "PLUS",
+    "+"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ",",
+  "expected": [
+   [
+    "COMMA",
+    ","
+   ]
+  ],
+  "actual": [
+   [
+    "COMMA",
+    ","
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "-",
+  "expected": [
+   [
+    "MINUS",
+    "-"
+   ]
+  ],
+  "actual": [
+   [
+    "MINUS",
+    "-"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ".",
+  "expected": [
+   [
+    "ERROR",
+    "."
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "."
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0002f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "/",
+  "expected": [
+   [
+    "SLASH",
+    "/"
+   ]
+  ],
+  "actual": [
+   [
+    "SLASH",
+    "/"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00030",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "0",
+  "expected": [
+   [
+    "INT",
+    "0"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "0"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00031",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "1",
+  "expected": [
+   [
+    "INT",
+    "1"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "1"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00032",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "2",
+  "expected": [
+   [
+    "INT",
+    "2"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "2"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00033",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "3",
+  "expected": [
+   [
+    "INT",
+    "3"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "3"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00034",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "4",
+  "expected": [
+   [
+    "INT",
+    "4"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "4"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00035",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "5",
+  "expected": [
+   [
+    "INT",
+    "5"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "5"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00036",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "6",
+  "expected": [
+   [
+    "INT",
+    "6"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "6"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00037",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "7",
+  "expected": [
+   [
+    "INT",
+    "7"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "7"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00038",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "8",
+  "expected": [
+   [
+    "INT",
+    "8"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "8"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00039",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "9",
+  "expected": [
+   [
+    "INT",
+    "9"
+   ]
+  ],
+  "actual": [
+   [
+    "INT",
+    "9"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ":",
+  "expected": [
+   [
+    "COLON",
+    ":"
+   ]
+  ],
+  "actual": [
+   [
+    "COLON",
+    ":"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ";",
+  "expected": [
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "actual": [
+   [
+    "SEMI",
+    ";"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "<",
+  "expected": [
+   [
+    "LT",
+    "<"
+   ]
+  ],
+  "actual": [
+   [
+    "LT",
+    "<"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "=",
+  "expected": [
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "actual": [
+   [
+    "ASSIGN",
+    "="
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": ">",
+  "expected": [
+   [
+    "GT",
+    ">"
+   ]
+  ],
+  "actual": [
+   [
+    "GT",
+    ">"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0003f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "?",
+  "expected": [
+   [
+    "ERROR",
+    "?"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "?"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00040",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "@",
+  "expected": [
+   [
+    "ERROR",
+    "@"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "@"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00041",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "A",
+  "expected": [
+   [
+    "IDENT",
+    "A"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "A"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00042",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "B",
+  "expected": [
+   [
+    "IDENT",
+    "B"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "B"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00043",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "C",
+  "expected": [
+   [
+    "IDENT",
+    "C"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "C"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00044",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "D",
+  "expected": [
+   [
+    "IDENT",
+    "D"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "D"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00045",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "E",
+  "expected": [
+   [
+    "IDENT",
+    "E"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "E"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00046",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "F",
+  "expected": [
+   [
+    "IDENT",
+    "F"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "F"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00047",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "G",
+  "expected": [
+   [
+    "IDENT",
+    "G"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "G"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00048",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "H",
+  "expected": [
+   [
+    "IDENT",
+    "H"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "H"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00049",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "I",
+  "expected": [
+   [
+    "IDENT",
+    "I"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "I"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "J",
+  "expected": [
+   [
+    "IDENT",
+    "J"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "J"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "K",
+  "expected": [
+   [
+    "IDENT",
+    "K"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "K"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "L",
+  "expected": [
+   [
+    "IDENT",
+    "L"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "L"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "M",
+  "expected": [
+   [
+    "IDENT",
+    "M"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "M"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "N",
+  "expected": [
+   [
+    "IDENT",
+    "N"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "N"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0004f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "O",
+  "expected": [
+   [
+    "IDENT",
+    "O"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "O"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00050",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "P",
+  "expected": [
+   [
+    "IDENT",
+    "P"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "P"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00051",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "Q",
+  "expected": [
+   [
+    "IDENT",
+    "Q"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "Q"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00052",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "R",
+  "expected": [
+   [
+    "IDENT",
+    "R"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "R"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00053",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "S",
+  "expected": [
+   [
+    "IDENT",
+    "S"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "S"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00054",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "T",
+  "expected": [
+   [
+    "IDENT",
+    "T"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "T"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00055",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "U",
+  "expected": [
+   [
+    "IDENT",
+    "U"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "U"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00056",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "V",
+  "expected": [
+   [
+    "IDENT",
+    "V"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "V"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00057",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "W",
+  "expected": [
+   [
+    "IDENT",
+    "W"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "W"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00058",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "X",
+  "expected": [
+   [
+    "IDENT",
+    "X"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "X"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00059",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "Y",
+  "expected": [
+   [
+    "IDENT",
+    "Y"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "Y"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "Z",
+  "expected": [
+   [
+    "IDENT",
+    "Z"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "Z"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "[",
+  "expected": [
+   [
+    "LBRACKET",
+    "["
+   ]
+  ],
+  "actual": [
+   [
+    "LBRACKET",
+    "["
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "\\",
+  "expected": [
+   [
+    "ERROR",
+    "\\"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "\\"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "]",
+  "expected": [
+   [
+    "RBRACKET",
+    "]"
+   ]
+  ],
+  "actual": [
+   [
+    "RBRACKET",
+    "]"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "^",
+  "expected": [
+   [
+    "ERROR",
+    "^"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "^"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0005f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "_",
+  "expected": [
+   [
+    "ERROR",
+    "_"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "_"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00060",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "`",
+  "expected": [
+   [
+    "ERROR",
+    "`"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "`"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00061",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "a",
+  "expected": [
+   [
+    "IDENT",
+    "a"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "a"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00062",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "b",
+  "expected": [
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "b"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00063",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "c",
+  "expected": [
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "c"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00064",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "d",
+  "expected": [
+   [
+    "IDENT",
+    "d"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "d"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00065",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "e",
+  "expected": [
+   [
+    "IDENT",
+    "e"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "e"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00066",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "f",
+  "expected": [
+   [
+    "IDENT",
+    "f"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "f"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00067",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "g",
+  "expected": [
+   [
+    "IDENT",
+    "g"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "g"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00068",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "h",
+  "expected": [
+   [
+    "IDENT",
+    "h"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "h"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00069",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "i",
+  "expected": [
+   [
+    "IDENT",
+    "i"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "i"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "j",
+  "expected": [
+   [
+    "IDENT",
+    "j"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "j"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "k",
+  "expected": [
+   [
+    "IDENT",
+    "k"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "k"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "l",
+  "expected": [
+   [
+    "IDENT",
+    "l"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "l"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "m",
+  "expected": [
+   [
+    "IDENT",
+    "m"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "m"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "n",
+  "expected": [
+   [
+    "IDENT",
+    "n"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "n"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0006f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "o",
+  "expected": [
+   [
+    "IDENT",
+    "o"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "o"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00070",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "p",
+  "expected": [
+   [
+    "IDENT",
+    "p"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "p"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00071",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "q",
+  "expected": [
+   [
+    "IDENT",
+    "q"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "q"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00072",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "r",
+  "expected": [
+   [
+    "IDENT",
+    "r"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "r"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00073",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "s",
+  "expected": [
+   [
+    "IDENT",
+    "s"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "s"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00074",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "t",
+  "expected": [
+   [
+    "IDENT",
+    "t"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "t"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00075",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "u",
+  "expected": [
+   [
+    "IDENT",
+    "u"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "u"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00076",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "v",
+  "expected": [
+   [
+    "IDENT",
+    "v"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "v"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00077",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "w",
+  "expected": [
+   [
+    "IDENT",
+    "w"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "w"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00078",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "x",
+  "expected": [
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "x"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00079",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "y",
+  "expected": [
+   [
+    "IDENT",
+    "y"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "y"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007a",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "z",
+  "expected": [
+   [
+    "IDENT",
+    "z"
+   ]
+  ],
+  "actual": [
+   [
+    "IDENT",
+    "z"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007b",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "{",
+  "expected": [
+   [
+    "LBRACE",
+    "{"
+   ]
+  ],
+  "actual": [
+   [
+    "LBRACE",
+    "{"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007c",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "|",
+  "expected": [
+   [
+    "BAR",
+    "|"
+   ]
+  ],
+  "actual": [
+   [
+    "BAR",
+    "|"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007d",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "}",
+  "expected": [
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "actual": [
+   [
+    "RBRACE",
+    "}"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007e",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "~",
+  "expected": [
+   [
+    "ERROR",
+    "~"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "~"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0007f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "",
+  "expected": [
+   [
+    "ERROR",
+    ""
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    ""
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a00080",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "",
+  "expected": [
+   [
+    "ERROR",
+    ""
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    ""
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a000a0",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": " ",
+  "expected": [
+   [
+    "ERROR",
+    " "
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    " "
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a000e9",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "é",
+  "expected": [
+   [
+    "ERROR",
+    "é"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "é"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a0043f",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "п",
+  "expected": [
+   [
+    "ERROR",
+    "п"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "п"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a020ac",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "€",
+  "expected": [
+   [
+    "ERROR",
+    "€"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "€"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a02028",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": " ",
+  "expected": [
+   [
+    "ERROR",
+    " "
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    " "
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "a1f600",
+  "group": "alphabet",
+  "mode": "tokens",
+  "input": "😀",
+  "expected": [
+   [
+    "ERROR",
+    "😀"
+   ]
+  ],
+  "actual": [
+   [
+    "ERROR",
+    "😀"
+   ]
+  ],
+  "status": "PASS"
+ },
+ {
+  "id": "p-hopcroft_equals_moore",
+  "group": "property",
+  "mode": "property",
+  "input": "hopcroft_equals_moore",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "Мур: 123, Хопкрофт: 123"
+ },
+ {
+  "id": "p-min_dfa_is_minimal",
+  "group": "property",
+  "mode": "property",
+  "input": "min_dfa_is_minimal",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "в мин. ДКА нет эквивалентных состояний"
+ },
+ {
+  "id": "p-min_dfa_equivalent",
+  "group": "property",
+  "mode": "property",
+  "input": "min_dfa_equivalent",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "обход произведения ДКА × мин. ДКА"
+ },
+ {
+  "id": "p-trap_is_sink",
+  "group": "property",
+  "mode": "property",
+  "input": "trap_is_sink",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "ловушка непринимающая и замкнута на себя"
+ },
+ {
+  "id": "p-nfa_dfa_min_agree",
+  "group": "property",
+  "mode": "property",
+  "input": "nfa_dfa_min_agree",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "1500 случайных строк, seed=2026"
+ },
+ {
+  "id": "p-table_lexer_equals_nfa_lexer",
+  "group": "property",
+  "mode": "property",
+  "input": "table_lexer_equals_nfa_lexer",
+  "expected": true,
+  "actual": true,
+  "status": "PASS",
+  "detail": "1500 случайных строк, seed=2026"
+ }
+]

@@ -1,0 +1,4 @@
+// BONUS: type cannot be inferred if the local is never used in a typed context
+f() returns r: int uses unused, alsoUnused {
+  r = 1;
+}

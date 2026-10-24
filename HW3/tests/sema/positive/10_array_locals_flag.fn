@@ -1,0 +1,12 @@
+// sema: allow-array-locals
+// With the flag, int[] locals are allowed (extension); their type can be inferred too
+rev(a: int[]) returns b: int[] uses tmp, i: int, n {
+  tmp = a;
+  n = length(a);
+  i = 0;
+  while (i < n) {
+    tmp[i] = a[n - 1 - i];
+    i = i + 1;
+  }
+  b = tmp;
+}

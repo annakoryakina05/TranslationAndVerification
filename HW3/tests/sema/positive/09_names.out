@@ -1,0 +1,17 @@
+Module
+  Function x(a: int) -> (r: int)  @2:1
+    symbols:
+      a        параметр               int    @2:3
+      r        возвращаемое значение  int    @2:19
+    requires: —
+    ensures:  —
+    body:
+      Assign r = (+ a:int 1):int  @2:26
+  Function g(x: int) -> (r: int)  @3:1
+    symbols:
+      x        параметр               int    @3:3
+      r        возвращаемое значение  int    @3:19
+    requires: —
+    ensures:  —
+    body:
+      Assign r = (call x x:int):int  @3:26

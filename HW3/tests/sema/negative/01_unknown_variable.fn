@@ -1,0 +1,8 @@
+// unknown variable (with a suggestion), unknown in index and in tuple target
+f(count: int) returns r: int {
+  r = cout + 1;
+  r = undefinedName;
+  r = arr[0];
+  r, zz = g(1);
+}
+g(a: int) returns x: int, y: int { x = a; y = a; }

@@ -1,0 +1,7 @@
+// quantifier variable names must be unique in their scope
+f(x: int) requires forall(x: int | x > 0) returns r: int ensures exists(r: int | r > 0) uses t: int {
+  t = 1;
+  r = 1;
+  assert forall(t: int | t > 0);
+  assert forall(i: int | exists(i: int | i > 0));
+}

@@ -1,0 +1,18 @@
+// Multiple return values and tuple assignment
+divide(a: int, b: int)
+  requires b > 0 and a >= 0
+  returns q: int, r: int
+  ensures a == q * b + r and r >= 0 and r < b
+{
+  q = 0;
+  r = a;
+  while (r >= b) invariant a == q * b + r and r >= 0 {
+    q = q + 1;
+    r = r - b;
+  }
+}
+
+useDivide(x: int) returns s: int uses q: int, r: int {
+  q, r = divide(x, 7);
+  s = q + r;
+}

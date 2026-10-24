@@ -1,0 +1,9 @@
+// operators need int operands; only arrays can be indexed; arrays cannot be compared
+f(a: int[], b: int[], n: int) returns r: int {
+  r = a + 1;
+  r = -a;
+  r = n[0];
+  r = a[a];
+  if (a == b) r = 1;
+  if (n < a) r = 2;
+}

@@ -1,0 +1,8 @@
+// a formula is not a function, a function is not a formula / not a variable
+p(x: int) => x > 0
+g(x: int) returns r: int r = x;
+f(x: int) requires g(x) returns r: int {
+  r = g;
+  r = p;
+  assert g(x) > 0 and g(x);
+}

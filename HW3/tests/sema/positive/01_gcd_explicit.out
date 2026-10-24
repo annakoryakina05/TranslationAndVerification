@@ -1,0 +1,24 @@
+Module
+  Function gcd(x: int, y: int) -> (r: int)  @2:1
+    symbols:
+      x        параметр               int    @2:5
+      y        параметр               int    @2:13
+      r        возвращаемое значение  int    @4:11
+      a        локальная переменная   int    @6:8
+      b        локальная переменная   int    @6:16
+    requires: (and (> x:int 0):bool (> y:int 0):bool):bool
+    ensures:  (> r:int 0):bool
+    body:
+      Block  @7:1
+        Assign a = x:int  @8:3
+        Assign b = y:int  @9:3
+        While (!= a:int b:int):bool  @10:3
+          invariant: (and (> a:int 0):bool (> b:int 0):bool):bool
+          body:
+            Block  @10:44
+              If (> a:int b:int):bool  @11:5
+                then:
+                  Assign a = (- a:int b:int):int  @11:16
+                else:
+                  Assign b = (- b:int a:int):int  @11:32
+        Assign r = a:int  @13:3

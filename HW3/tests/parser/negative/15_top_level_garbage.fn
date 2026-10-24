@@ -1,0 +1,4 @@
+;;;
+f() returns r: int { r = 1; }
+) + 1
+g() returns r: int { r = 2; }

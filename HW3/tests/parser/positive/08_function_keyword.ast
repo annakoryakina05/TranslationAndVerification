@@ -1,0 +1,18 @@
+Module
+  Function inc  @2:1
+    params:   x: int
+    requires: —
+    returns:  y: int
+    ensures:  —
+    uses:     —
+    body:
+      Assign y = (+ x 1)  @2:37
+  Function twice  @4:1
+    params:   x: int
+    requires: —
+    returns:  y: int
+    ensures:  —
+    uses:     —
+    body:
+      Block  @4:39
+        Assign y = (call inc (call inc x))  @5:3

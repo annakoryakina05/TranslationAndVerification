@@ -1,0 +1,6 @@
+// Dangling else binds to the nearest if (example from the spec)
+f(x: int, y: int) returns z: int {
+  if (x > 0) if (y < 0) z = 1; else z = 5;
+  if (x > 0) { if (y < 0) z = 1; } else z = 5;
+  if (true) z = 0;
+}

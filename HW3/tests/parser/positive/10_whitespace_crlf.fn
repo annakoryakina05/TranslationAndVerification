@@ -1,0 +1,5 @@
+// CRLF, tabs and comments everywhere
+f(x:int)returns r:int{//c
+	r=x;// tail
+	if(x>0){r=1;}else{}
+}

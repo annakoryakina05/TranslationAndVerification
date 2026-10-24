@@ -1,0 +1,10 @@
+// multi-value functions: not allowed in expressions; tuple arity and types must match
+two(x: int) returns a: int, b: int { a = x; b = x; }
+arr(x: int) returns a: int[], b: int { b = x; }
+f(x: int) returns r: int, s: int, t: int[] {
+  r = two(x);
+  r = two(x) + 1;
+  r, s, t = two(x);
+  r, s = arr(x);
+  r, r = two(x);
+}

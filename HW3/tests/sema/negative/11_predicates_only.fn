@@ -1,0 +1,8 @@
+// quantifiers and formula references are allowed only in predicates
+p(x: int) => x > 0
+f(x: int) returns r: int {
+  if (forall(i: int | i > x)) r = 1;
+  while (p(x)) r = 2;
+  r = p(x);
+  if (p(x) and x > 0) r = 3;
+}

@@ -1,0 +1,19 @@
+Module
+  Formula positive  @2:1
+    params: x: int
+    body:   (> x 0)
+  Formula sorted  @4:1
+    params: a: int[]
+    body:   (forall (i int) (-> (and (>= i 0) (< i (- (call length a) 1))) (<= (index a i) (index a (+ i 1)))))
+  Formula contains  @7:1
+    params: a: int[], v: int
+    body:   (exists (k int) (== (index a k) v))
+  Function findMax  @9:1
+    params:   a: int[]
+    requires: (and (> (call length a) 0) (formula sorted a))
+    returns:  m: int
+    ensures:  (and (forall (i int) (-> (and (>= i 0) (< i (call length a))) (<= (index a i) m))) (formula contains a m))
+    uses:     —
+    body:
+      Block  @13:1
+        Assign m = (index a (- (call length a) 1))  @14:3

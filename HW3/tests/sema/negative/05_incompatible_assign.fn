@@ -1,0 +1,9 @@
+// incompatible types in assignments
+f(a: int[], n: int) returns r: int, b: int[] {
+  r = a;
+  b = n;
+  b = a;
+  r = true;
+  r = n > 0;
+  b[0] = a;
+}

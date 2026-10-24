@@ -1,0 +1,25 @@
+// BONUS: local types are inferred (no annotation in uses)
+sum(a: int[]) returns s: int uses i, acc {
+  i = 0;
+  acc = 0;
+  while (i < length(a)) {
+    acc = acc + a[i];
+    i = i + 1;
+  }
+  s = acc;
+}
+
+// type of t comes from the context of its first use, not only from assignment
+chain(x: int) returns r: int uses t, u, v {
+  r = t + 1;
+  u = v;
+  v = x;
+  t = u;
+}
+
+// tuple assignment infers both locals at once
+pair(a: int, b: int) returns p: int, q: int { p = a; q = b; }
+usePair() returns r: int uses m, n {
+  m, n = pair(1, 2);
+  r = m * n;
+}

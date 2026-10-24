@@ -1,0 +1,3 @@
+// Variables and functions live in different namespaces: x is a variable, x(...) a call
+x(a: int) returns r: int r = a + 1;
+g(x: int) returns r: int r = x(x);

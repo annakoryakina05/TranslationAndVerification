@@ -1,0 +1,9 @@
+// BONUS: contradictory uses of an unannotated local
+f(a: int[]) returns r: int uses x, y, z {
+  x = 1;
+  x = a;
+  y = length(a);
+  r = y[0];
+  z = r;
+  r = length(z);
+}

@@ -1,0 +1,19 @@
+// Formulas, quantifiers, formula references; function calls inside predicates
+positive(x: int) => x > 0
+
+sorted(a: int[]) =>
+  forall(i: int | i >= 0 and i < length(a) - 1 -> a[i] <= a[i + 1])
+
+inArray(a: int[], v: int) => exists(k: int | k >= 0 and k < length(a) and a[k] == v)
+
+square(x: int) returns y: int y = x * x;
+
+findMax(a: int[])
+  requires length(a) > 0 and sorted(a)
+  returns m: int
+  ensures inArray(a, m) and positive(square(m) + 1)
+{
+  m = a[length(a) - 1];
+  assert forall(j: int | j >= 0 and j < length(a) -> a[j] <= m);
+  assume positive(length(a));
+}

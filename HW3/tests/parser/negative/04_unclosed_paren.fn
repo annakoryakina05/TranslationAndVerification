@@ -1,0 +1,5 @@
+f(x: int) returns r: int {
+  if (x > 0 { r = 1; }
+  r = (x + 1;
+  r = 2;
+}

@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from funny_parser.testing import run_all  # noqa: E402
+from funny_parser.testing import run_all  
 
 
 class TestParser(unittest.TestCase):
